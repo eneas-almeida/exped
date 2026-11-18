@@ -1,0 +1,3481 @@
+{
+  "setores": [
+    {
+      "nome": "Laranja",
+      "latitude": -7.94935,
+      "longitude": -36.2262
+    },
+    {
+      "nome": "Verde",
+      "latitude": -7.949,
+      "longitude": -36.22615
+    },
+    {
+      "nome": "Branco",
+      "latitude": -7.94885,
+      "longitude": -36.2265
+    },
+    {
+      "nome": "Azul",
+      "latitude": -7.9493,
+      "longitude": -36.22685
+    },
+    {
+      "nome": "Vermelho",
+      "latitude": -7.9492,
+      "longitude": -36.22665
+    },
+    {
+      "nome": "Amarelo",
+      "latitude": -7.94898,
+      "longitude": -36.2269
+    },
+    {
+      "nome": "Estacionamento Excursões",
+      "latitude": -7.9482,
+      "longitude": -36.2275
+    }
+  ],
+  "carriers": [
+    {
+      "nome": "Abdon Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 33 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Abobrinha Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 51 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "ACVS Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 96 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "ADR Receptivo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 23 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Adriano Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 114A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Adriano Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 44 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Aécio Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 91 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "AG Queiroz",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 97 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Aldenor Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 99 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Aldenora Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 02/04 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Alex Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 28/30 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Alexandre",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 91 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Alexandre Fortunato",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 77/78 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ali Turismo (Sandrack)",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 45 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Alice Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 95 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Allan Fretante",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 63 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Alves Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 16 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "AMS Transportes & Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 12 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Ana's Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 02/04 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Anderson Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 53 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "André - Rio Tinto",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 121 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "André Mazarope",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 137 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Andrea Costa",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 79 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Arlan Tour",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 121 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "ATF Turismo / Igor",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 70 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "AWG Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 16 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Bagaça Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9482,
+      "longitude": -36.2275,
+      "setor_vaga_texto": "Estacionamento Excursões - Vaga 10 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Baiano VIP",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 99 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Baiton Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 34 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Barreto Express",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 130 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Batista Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 88 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Belarmino Mendes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 20 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Bento Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 26 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Berel Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Beto Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 115 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Beto Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 64A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Bigode Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 111 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Biuzinho Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 46 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Box Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 28 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Bruna Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 55 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "C&C Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 77 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Cabana Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 84/86 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Cafuringa Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 116 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Carlinhos da Sulanca",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 26 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Carlos Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 58 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Carol Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 80 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Carvalho Exscursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 108 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Cebola Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 83 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Cesar Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 120 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "CH Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 93 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Chico Dias",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 79 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Chiquinho Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 53/54 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Cipriano Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 74 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Cllaf Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 63/65 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Corrinha Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 41A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Cristiano Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 131 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Cycy Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 49 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "D'Nilton",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 99 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dairlon",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 36 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Danda Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 73 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Danilo Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 12 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Danturismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 84 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Daví Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 30 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "David Excursões",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Day Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 08 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dé Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 40 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dege Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 72 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Denilson Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 02 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dervânia Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 134 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Deyse Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 138/140 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "DF Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 135/137 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dielson / Alexandra",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 112 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dinho Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 105 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "DL Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 17 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dois Irmãos Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 114 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Dona Suely",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 38 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Donato Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 31 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Durval Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 56/58 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Ebenezer",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 23/25 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "EIF Viagens e Receptivo (Fred)",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 29 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Elma Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 60 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Ely Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 94/96 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Emílio Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 31/33 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Enaide Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 76 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Encomendas Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 104 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Enoque Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "ER Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 10 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Erivan",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 21 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ernesto Veneiorão",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 80 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Essencial (Djavan)",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 88A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Ester Excursões",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 44A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Estratégia Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 107 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Estrela D'alva",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 44 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Everaldo Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 91 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Evolution Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 110 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Expresso do Vale",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 40 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Expresso Macêdo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 38 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Expresso Pará",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 36 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ezonildo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 59 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "F.E Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 03 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "F&T Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 54 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Fabinho Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 96 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Fábio Excursões.Log",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 64B (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Fábio Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 102 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Facol Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 01 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Felipe de Mossoró",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 24 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Felipe Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 134 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Fernando",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 58 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Fernando Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Fernando Henrique Transportadora",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 133 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Flaviano Torres",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 116 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Flavio Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9482,
+      "longitude": -36.2275,
+      "setor_vaga_texto": "Estacionamento Excursões - Vaga 141/142 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Flecha Azul Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 73 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "FMA Express",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 136 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Formiga Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 42 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Fox Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 46 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Fran Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 138 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Francisco de Assis",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 06 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Francisquinho",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Freitas Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 124 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Fumação Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 59 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gabrielly Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 37 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Galpão Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 06 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gasparzinho",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 79/81 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "GDN Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 78 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gedron Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 118 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Genilson Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 71 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Geová Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 67/69 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gil Entregas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 132/133 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Gilson Souza",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 81 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ginal Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 94 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gordinha Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 126 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Gordinho das Encomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 127 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Gorete & Jonson",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 124 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Granpola Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 66 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Greew Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 15 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Grilo Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 37 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Grupo Cacauzinho",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 83A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Grupo Eclipse",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 45 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Guardiato Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 86 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "GV Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 12 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "GV Viagens - Gilson",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 60/61 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Henrique Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 28A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Hyggor Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 100 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Imperatur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 109 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Índio Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 112 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Índya Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 127 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Iraildo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 121 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Iraneide Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 114 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Iranildo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 19 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "IreneTurismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Irmão Val - Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 66 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Israel Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 66 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ito Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 31 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ivânio Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 71 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Izac Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 69 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "J Quaresma",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 133 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "J. Santos",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 43 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Jamstur",
+      "tipo": "box_interno",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 130",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Jan Táxi (O Rei das Encomendas)",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 107 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Jandaia Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "JC Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 136 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "JD Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 106 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "JD Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 108 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "JK Excursão - Rio Tinto",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 122 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "JKS Log Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 118 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "JM Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 108 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Jó Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 86 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "João Sertanejo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 72 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Joãozinho Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 90A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Joca Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 61 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Jonatas Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 06 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Jones Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 14 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Josemar Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 49 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Josevaldo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 51 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Josivaldo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 51 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Josivan Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 130/131 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Josy Viagens",
+      "tipo": "box_interno",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 107S",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "JR Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 04 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "JS Excursões",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 103 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "JS Globo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 133 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Júnior & Liliane Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 25 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Júnior Caicó",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 82 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Junior da Baixada",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 136 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Júnior do Táxi- Viagens e Encomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 104 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Júnior e Eliane",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 68 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Junior Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 113/114 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Junior Lotação",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 33 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Júnior Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 44/45 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Júnior Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 50/52 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Kaká Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 140 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Kal Tour",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 27/29 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Lapa Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 113 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Lari Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 101 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "LC Turismo e Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 05 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Leão Transpostes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 108 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Leonardo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 34 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Lêu Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 135 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Li Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 35 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Lia Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 106 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Lince Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 03 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Lindomar Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 79 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Lino Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 129 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Lins Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 139/140 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Litinho Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 71 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Locatur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 44 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Louro Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 84A (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "LR Eventos Viagens Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 68 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "LR Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 27 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "LR Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 106 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Lucas Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 40 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Luciano Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 131 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Luga Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 103 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Luz Divína",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 41 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "LVC Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 14 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "M&F Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 118 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "MA Logistica",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 89 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Mada Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 116 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Magalhães Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 33 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Mais Sonhos",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 104 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Mano Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 74 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Manoel Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 93 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Manuella Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 75 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Marcelo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 42 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Marcelo Ceará",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 84 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Marcelo Costa Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 49 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Marcelo Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 13/15 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Márcio Tur",
+      "tipo": "box_interno",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 39",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Marcondes Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 145/146 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Marcos Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 08 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Marcos Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 77 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Marlin Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 126 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Marquinhos Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 66 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Martins Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 102 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Martins Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 118 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Mega Mix Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 11 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Mendes Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 21 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Milena Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 82 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Minervina",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 51 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Moda Center Log",
+      "tipo": "transportadora_externa",
+      "latitude": -7.9482,
+      "longitude": -36.2275,
+      "setor_vaga_texto": "Transportadora externa - sem vaga interna informada",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 0
+    },
+    {
+      "nome": "MP Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 47 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "MS Turismo - Mariazinha",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 115 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "MS Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 68/70 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "N&D Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 70 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Nagibe Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 38 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nagilson Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 60 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nal Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 43 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Naldo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 128 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Naldo's Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 147 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Nelson Encomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 69 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Neno Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 38 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Nildo Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 32/34 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nivaldo Tosi",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 109 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Noélia Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nordeste Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 90 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nova Jerusalém",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 88/90 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Nova Tour",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 61 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "NR Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 20/22 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "NT Express Logística",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 06 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Nunes Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 126 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "O GRANDE Viagens & Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 101 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Oberdan",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 20 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Odilon",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 97 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Oliveira Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 21/23 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Opará",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 41 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Orlando Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 113 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "P & R Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 00 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "P&R",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 00 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Paiano Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 12 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Papa Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 132 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Papa-Léguas",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 50/52 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Passarinho Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 73 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Paulo - O Rei das Encomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Paulo César Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 86 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Paulo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 127 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Pedro Guarabira",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 119 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Pedro Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 82 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Pedro Transportes e Encomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 82 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Pepeu",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 75 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Pequeno Tansportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 136/137 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Pingotur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 31 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Portal Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 49 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "PP Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 119 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Preta Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 55/56 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Preto Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 42 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Princípe Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 51/53 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Rafa Tour PE",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 85 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Rafa Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 27 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Rafael e Jô",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 62 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Rafael Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 72 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Raimundo Neto",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 34 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Raimundo Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 123/125 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Ranilson Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 18 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Rápido Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 49 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Raudeck Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 14 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "RB Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 115 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Realeza Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 37 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Redenção Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 13 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Régis Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 59/61 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Renascer Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 39 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Ricardo Moura Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 25 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Rildo Mororó",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 66 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Risetur Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 35 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Roberto Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 134/135 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Roberto Jr Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 49 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Robson Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 101 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Rodrigo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 03/04 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Rogerio Home Delivery",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 75/76 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Romário Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 07 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Ronivon Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 02 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Rosa Branca",
+      "tipo": "box_interno",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 48A",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Rosa Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 47 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Rosemário Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ruan Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 32 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Ruth Excursões",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 92 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "S.E - Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 110 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "S&S Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 112 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Saldanha Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 24 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sales Emcomendas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 89 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Salmo 40",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 15 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Samara & Pedro Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 123 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Sambus",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 47 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sandra Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 56/58 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Santana Tur",
+      "tipo": "box_interno",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 106",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Santos Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Seg Log",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 98 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Sérgio Carvalho - Coleta e Entregas",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 116 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Severino Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 63 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Sheyla Viagens",
+      "tipo": "box_interno",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 45",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Sidney Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 46 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Silva Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 119 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Silvania & Carlinhos Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 54 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Simão Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 128 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sinval Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 62 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sirley Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 37 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sisal Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 83 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "SM Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 144 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "SN Viagens",
+      "tipo": "box_interno",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 89",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 10
+    },
+    {
+      "nome": "Socorro Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 45 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Sr. Chico Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 29 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Suênio Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 28 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Tagitur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 120/122 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Taty Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 100 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Thiago Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 112 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Tião Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 54 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Toinho da Van",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 53 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Tom Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 60 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Trans Capelão",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 85 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Trans Costa",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 98 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Trans Junior",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 96/98 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Trans Lauren",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 111 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Trans Ribeiro",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 41 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Translog",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 142 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Transmarques",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 27 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Transmedeiros (Erivan)",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 139 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Transpires",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 82 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Tropical Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 104 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "União Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 80 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Val Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 71 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Van do Gago",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 8 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Vânia Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 135 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Véi Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 42 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Velox Transporte",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja - Vaga 11 (Gerador)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 20
+    },
+    {
+      "nome": "Veronice Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 100 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Via Direta Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 81 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Via Monte Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 76 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Vila Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 137 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Viviane Bispo Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9492,
+      "longitude": -36.22665,
+      "setor_vaga_texto": "Estacionamento Setor Vermelho - Vaga 103 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "W.D. TRANSPORTE E ACESSÓRIA",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 130 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Wallace Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 01 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Washington Tur / Rawa Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94935,
+      "longitude": -36.2262,
+      "setor_vaga_texto": "Estacionamento Setor Laranja (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Welligton Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 62 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "WN Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 105 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Xavier Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 64 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Zanchecttur",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Zé Cardoso Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 81 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Zé Maria Transportes",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 95 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Zé Pereira Turismo",
+      "tipo": "excursao_interna",
+      "latitude": -7.949,
+      "longitude": -36.22615,
+      "setor_vaga_texto": "Estacionamento Setor Verde - Vaga 92 (Pesado)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 30
+    },
+    {
+      "nome": "Zeca Tur",
+      "tipo": "excursao_interna",
+      "latitude": -7.94898,
+      "longitude": -36.2269,
+      "setor_vaga_texto": "Estacionamento Setor Amarelo - Vaga 48 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Zezinho Excursão",
+      "tipo": "excursao_interna",
+      "latitude": -7.94885,
+      "longitude": -36.2265,
+      "setor_vaga_texto": "Estacionamento Setor Branco - Vaga 41 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    },
+    {
+      "nome": "Zito Galego Viagens",
+      "tipo": "excursao_interna",
+      "latitude": -7.9493,
+      "longitude": -36.22685,
+      "setor_vaga_texto": "Estacionamento Setor Azul - Vaga 114 (Vans)",
+      "horario_saida_padrao": "00:00:00",
+      "tempo_medio_fila_minutos": 15
+    }
+  ],
+  "metadados": {
+    "origem": "Arquivo JSON anexado: listagem de excursões e transportadoras do Moda Center Santa Cruz",
+    "total_carriers": 381,
+    "criterios": {
+      "coordenadas": "Coordenadas aproximadas por centro de setor; a fonte tem localization=null em todos os 381 registros. Não representam a vaga exata.",
+      "ancora_geografica": "Moda Center Santa Cruz: aproximadamente -7.94915, -36.22646 (OpenStreetMap/Mapcarta).",
+      "horario_saida_padrao": "00:00:00 significa horário não informado na fonte; substituir pelo horário operacional confirmado antes de usar em logística.",
+      "tempo_medio_fila_minutos": "Estimativas operacionais, não presentes na fonte: vans=15, pesado=30, gerador=20, box interno=10; transportadora externa=0 por não haver fila interna aplicável.",
+      "classificacao_tipo": "Estacionamento de Vans/Pesado/Gerador = excursao_interna; vaga setorial sem estacionamento identificado = box_interno; Moda Center Log/CORREIOS = transportadora_externa."
+    }
+  }
+}

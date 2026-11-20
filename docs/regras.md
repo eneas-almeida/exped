@@ -45,6 +45,13 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 
 ---
 
+## Fluxo de alterações
+
+- Ao concluir qualquer alteração em arquivos do projeto, o Claude deve **perguntar se o usuário deseja fazer commit e push** antes de encerrar a resposta.
+- Nunca commitar ou fazer push automaticamente sem a confirmação explícita do usuário.
+
+---
+
 ## Git
 
 Este projeto adota o padrão **[Conventional Commits](https://www.conventionalcommits.org/)** para todas as mensagens de commit.

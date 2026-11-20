@@ -26,12 +26,95 @@ O MVP será testado em **Santa Cruz do Capibaribe – PE**, um dos maiores polos
 O funcionamento do polo é o seguinte:
 
 - Compradores chegam cedo da manhã de van, ônibus, carro ou moto de diversas cidades do Nordeste.
-- Eles estacionam em locais específicos chamados de **baias** e saem para comprar produtos em diversas lojas.
-- Cada comprador visita múltiplas lojas, fecha pedidos e precisa que os volumes sejam entregues na sua baia antes de ir embora.
+- Eles estacionam em locais específicos chamados de **pontos** e saem para comprar produtos em diversas lojas.
+- Cada comprador visita múltiplas lojas, fecha pedidos e precisa que os volumes sejam entregues no seu ponto antes de ir embora.
 - O tempo disponível é curto — compradores não ficam esperando.
-- O lojista precisa organizar os pedidos de cada comprador e despachar os volumes rapidamente até as baias.
+- O lojista precisa organizar os pedidos de cada comprador e despachar os volumes rapidamente até os pontos.
 - Compras também podem ser feitas durante a semana ou dias antes — o lojista cria a embalagem e ela fica aguardando até o dia da entrega.
 - Uma expedição pode ter **múltiplos volumes/pacotes** para o mesmo destinatário.
+
+### Mapeamento geoespacial dos pontos
+
+Os pontos do polo são estruturados em **setores** identificados por cor, cada um com coordenadas GPS. Dentro de cada setor, há **vagas numeradas** por tipo de veículo. A hierarquia de navegação do entregador é:
+
+```
+Polo → Setor (cor + GPS) → Vaga (número) → Tipo de veículo
+```
+
+Setores mapeados em Santa Cruz do Capibaribe:
+
+| Setor | Cor | Lat | Lng |
+|---|---|---|---|
+| Laranja | 🟠 | -7.94935 | -36.22620 |
+| Verde | 🟢 | -7.94900 | -36.22615 |
+| Branco | ⚪ | -7.94885 | -36.22650 |
+| Azul | 🔵 | -7.94930 | -36.22685 |
+| Vermelho | 🔴 | -7.94920 | -36.22665 |
+| Amarelo | 🟡 | -7.94898 | -36.22690 |
+| Estacionamento Excursões | — | -7.94820 | -36.22750 |
+
+Tipos de vaga por veículo:
+
+| Tipo | Tempo médio de fila |
+|---|---|
+| **Vans** | ~15 min |
+| **Pesado** (ônibus) | ~30 min |
+| **Gerador** | ~20 min |
+
+**Compradores recorrentes têm ponto fixo.** Muitos compradores sempre estacionam no mesmo ponto. Esses pontos podem ser pré-cadastrados e sugeridos automaticamente quando o comprador é selecionado — eliminando a necessidade de informar o ponto manualmente na maioria dos casos.
+
+**Google Maps API** é utilizado para roteirização entre loja e setor (GPS). A referência de vaga (`Setor Laranja - Vaga 33`) guia o entregador ao ponto exato dentro do setor.
+
+#### Modelo de dados do Ponto
+
+O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.json`) embute dados estruturados em texto livre — dificulta filtros e ordenação. O modelo recomendado para o sistema é separar os campos:
+
+```json
+{
+  "nome": "Abdon Turismo",
+  "tipo": "excursao_interna",
+  "localizacao": {
+    "setor": "laranja",
+    "vaga": "33",
+    "tipo_veiculo": "pesado"
+  },
+  "tempo_medio_fila_minutos": 30
+}
+```
+
+Isso permite agrupar entregas por setor, ordenar por vaga dentro do setor e calcular tempo estimado de espera na fila.
+
+### Excursões e horários de partida
+
+Cada van, carro ou ônibus que chega ao polo é uma **excursão** e tem um **horário de partida** definido. Dentro de uma mesma excursão viajam **múltiplos compradores** de diferentes cidades.
+
+Isso cria uma **restrição crítica de tempo**: a entrega de todos os volumes de um comprador precisa chegar ao ponto **antes do horário de partida da excursão** — caso contrário, o comprador vai embora sem a mercadoria.
+
+| Conceito | Impacto operacional |
+|---|---|
+| Excursão com partida próxima | Entregadores precisam priorizar esses pontos primeiro |
+| Múltiplos compradores na mesma excursão | Entregas para o mesmo ponto podem ser agrupadas numa única saída |
+| Tempo médio de fila por tipo de veículo | Vans (~15min), Pesado (~30min) — deve ser somado ao tempo de deslocamento para calcular a margem real |
+
+> O sistema deve exibir o **horário de partida** de cada excursão e alertar quando uma entrega corre risco de não chegar a tempo. O roteiro sugerido pela IA deve considerar os prazos — priorizando excursões com partida mais próxima.
+
+O campo `horario_saida_padrao` já existe no arquivo de brainstorming (`geo-espacial-clientes.json`) mas está zerado. No sistema, esse horário deve ser cadastrado por excursão e servir como prazo-limite de entrega.
+
+Modelo de dados atualizado:
+
+```json
+{
+  "nome": "Abdon Turismo",
+  "tipo": "excursao_interna",
+  "localizacao": {
+    "setor": "laranja",
+    "vaga": "33",
+    "tipo_veiculo": "pesado"
+  },
+  "horario_saida": "14:00:00",
+  "tempo_medio_fila_minutos": 30
+}
+```
 
 ### Tipos de entrega
 
@@ -39,27 +122,39 @@ As expedições não são apenas intra-polo. Existem dois tipos:
 
 | Tipo | Descrição |
 |---|---|
-| **Local (baia)** | Entrega no polo, na baia onde o comprador estacionou o veículo. O entregador percorre distâncias curtas dentro da área do polo. |
-| **Regional** | Entrega para compradores que possuem loja física em outra cidade ou região. Os volumes são transportados pessoalmente pelos veículos próprios do lojista/entregador até o destino. |
+| **Local (ponto)** `[MVP]` | Entrega no polo, no ponto onde o comprador estacionou o veículo. O entregador percorre distâncias curtas dentro da área do polo. |
+| **Regional** `[Futuro]` | Entrega para compradores que possuem loja física em outra cidade ou região. Os volumes são transportados pessoalmente pelos veículos próprios do lojista/entregador até o destino. |
 
 ### Escala nos dias de pico
 
-Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~40 expedições** (média de 2–3 volumes por expedição). Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 2 minutos, só o registro já consome mais de 1 hora.
+Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~50 expedições** (média de 2–3 volumes por expedição). Uma expedição é cadastrada de uma vez e pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 2 minutos, só o registro já consome mais de 1 hora e 40 minutos.
 
-### Como a baia é informada
+### Proporção local vs regional
 
-A baia é comunicada pelo comprador ao lojista **geralmente no próprio dia**:
-- O comprador estaciona o veículo, sai para fazer as compras e, quando chega na loja do lojista, informa o pedido e onde está estacionado (baia).
-- Em alguns casos, compradores que fizeram pedido com antecedência chegam ao polo em um dia específico e **notificam o lojista que estão aguardando na baia** — só então o lojista organiza e despacha a entrega.
+**~90% das entregas são locais (ponto)** numa manhã típica. Entregas regionais são minoria e estão fora do escopo do MVP.
+
+### Entregas regionais `[Futuro]`
+
+O MVP foca exclusivamente em entregas locais no polo. Entregas regionais (outras cidades) serão endereçadas em versão futura. Quando implementadas, considera-se que o lojista possui veículo ou frota própria — o entregador leva pessoalmente os volumes ao destino.
+
+### Como o ponto é informado
+
+O ponto é comunicado pelo comprador ao lojista **geralmente no próprio dia**:
+- O comprador estaciona o veículo, sai para fazer as compras e, quando chega na loja do lojista, informa o pedido e em qual ponto está estacionado.
+- Para pedidos com antecedência: o comprador chega ao polo e **comunica ao lojista em qual ponto está** (geralmente por WhatsApp ou pessoalmente). A partir disso, o lojista identifica quais clientes estão naquele local e monta o roteiro de expedição para aquele ponto.
+
+> O sistema deve permitir que o lojista veja facilmente **quais clientes já informaram o ponto** e quais ainda estão aguardando — para agrupar as entregas por destino e despachar de forma eficiente.
+
+> **Canal de comunicação comprador → lojista:** O ponto é informado **fora do sistema** — via WhatsApp (contato comercial) ou ligação telefônica. O lojista recebe a informação e atualiza manualmente no sistema. O produto não gerencia essa comunicação.
 
 ### Variações de fluxo por momento de compra
 
 | Situação | Descrição |
 |---|---|
-| **Compra no mesmo dia** | Comprador chega, faz o pedido e informa a baia. Lojista cria a expedição com baia já definida. |
-| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo e avisa o lojista em qual baia está. Lojista atualiza a expedição com a baia e despacha. |
+| **Compra no mesmo dia** | Comprador chega, faz o pedido e informa o ponto. Lojista cria a expedição com ponto já definido. |
+| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo, avisa o lojista em qual ponto está. Lojista atualiza o ponto e o sistema mostra quais outros clientes também estão naquele ponto — facilitando o agrupamento do roteiro. |
 
-Isso significa que uma expedição pode existir no sistema **sem baia definida** — aguardando o comprador chegar e informar. O sistema precisa representar esse estado.
+Isso significa que uma expedição pode existir no sistema **sem ponto definido** — aguardando o comprador chegar e informar. O sistema precisa representar esse estado.
 
 ---
 
@@ -68,11 +163,16 @@ Isso significa que uma expedição pode existir no sistema **sem baia definida**
 ### Lojista
 Responsável por cadastrar as expedições, organizar os volumes e acionar o entregador. É o usuário com maior fricção no processo atual — pouco tempo, muitos pedidos simultâneos. Pode não ter familiaridade com tecnologia.
 
-### Entregador (pessoa que executa a entrega)
-Pode ser o próprio dono da loja ou um funcionário registrado. Quem for executar uma entrega **precisa estar cadastrado no sistema** — não é possível registrar uma entrega sem um entregador identificado. Usa celular durante o trabalho para registrar o comprovante.
+### Entregador (pessoa que executa a entrega) `[MVP]`
+Pode ser o próprio dono da loja ou um prestador avulso que o lojista já conhece e aciona diretamente. No MVP, o lojista sabe quem vai entregar — o entregador é cadastrado no sistema e a atribuição acontece no momento de traçar o roteiro, não no cadastro da expedição. Quem for executar uma entrega precisa estar cadastrado no sistema. Usa celular durante o trabalho para registrar o comprovante.
+
+### Entregador da região (autônomo avulso) `[Futuro]`
+Existem entregadores que circulam pela região sem vínculo fixo com nenhuma loja. No futuro, esses entregadores poderão acessar o sistema para ver quais lojas estão precisando de entrega no momento e se deslocar até lá para se disponibilizar — modelo similar a um marketplace de entregas localizado. Essa funcionalidade abre o produto para um novo tipo de usuário e um novo modelo operacional.
 
 ### Comprador (cliente do lojista)
-Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa sua baia ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
+Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa seu ponto ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
+
+> **Telefone é opcional no cadastro.** Compradores sem telefone são casos raros e minoritários. O cadastro simplesmente fica sem número — o fluxo de entrega não para, a notificação simplesmente não é disparada.
 
 ---
 
@@ -85,8 +185,11 @@ A compra pode ter sido registrada em um sistema (soft) existente, ou pode estar 
 **Exemplo real de dado mínimo numa embalagem:** `Rafael – Alto Branco – 3 peças`. Com dados tão genéricos, o sistema precisa identificar qual "Rafael" é esse — pode haver múltiplos clientes com o mesmo nome — e associá-lo ao cliente correto cadastrado.
 
 Outros problemas identificados:
-- Falta de roteirização entre loja → baias nas expedições.
+- Falta de roteirização entre loja → pontos nas expedições.
+- **Risco de perder o horário de partida das excursões** — sem visibilidade dos prazos, o lojista não sabe quais entregas são urgentes e pode priorizar errado, resultando em mercadoria que não embarca.
 - Sem registro de comprovante de entrega.
+- **Sem rastreamento de devoluções** — volumes que voltam somem do controle; ninguém sabe o que retornou, por qual motivo ou o que fazer com eles.
+- **Sem capacidade de repriorizar** — se um comprador avisa que vai embora em breve, o lojista não tem como reordenar o roteiro do entregador que já saiu.
 - Sem visibilidade do status das entregas em tempo real.
 
 ---
@@ -97,12 +200,12 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 | Origem | Descrição | Status |
 |---|---|---|
-| **Voz (wizard de IA)** | Lojista fala ou digita numa conversa com a IA, que faz as perguntas, confirma o cliente e cria a expedição | **MVP — carro-chefe** |
 | **Manual** | Formulário simples e eficiente para preenchimento direto | **MVP** |
-| **Foto / upload de imagem** | OCR lê texto manuscrito ou impresso em qualquer superfície (papel, saco, etiqueta) | **Futuro (pós-MVP)** |
-| **Integração com soft existente** | Puxa dados de compra já registrados no sistema do lojista | **Futuro (pós-MVP)** |
+| **Voz (wizard de IA)** | Lojista fala ou digita numa conversa com a IA, que faz as perguntas, confirma o cliente e cria a expedição. Na UI, aparece como botão desabilitado sinalizando funcionalidade futura. | **Futuro** |
+| **Foto / upload de imagem** | OCR lê texto manuscrito ou impresso em qualquer superfície (papel, saco, etiqueta) | **Futuro** |
+| **Integração com soft existente** | Puxa dados de compra já registrados no sistema do lojista | **Futuro** |
 
-> **Decisão de MVP:** Foto/OCR e integração com soft são implementações futuras. O MVP foca em **voz (wizard IA) + manual**.
+> **Decisão de MVP:** O MVP foca exclusivamente no **cadastro manual**. Voz, foto/OCR e integração com soft são implementações futuras — o wizard de voz aparece desabilitado na interface como prévia da funcionalidade.
 
 ---
 
@@ -112,7 +215,7 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 2. Lojista ou funcionário anota os dados manualmente (papel, WhatsApp, memória).
 3. Volumes são embalados e acumulados na loja.
 4. Lojista decide "na cabeça" quais volumes mandar de uma vez e chama o entregador.
-5. Entregador pega os volumes, faz a rota entre loja e baias, entrega um a um.
+5. Entregador pega os volumes, faz a rota entre loja e pontos, entrega um a um.
 6. Entregador volta, pega mais volumes, repete o ciclo várias vezes no mesmo dia.
 7. Nenhum comprovante formal de entrega. Sem rastreamento.
 
@@ -120,34 +223,55 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 ## 6. Fluxo Proposto (com o produto)
 
-### Lojista — criação via wizard de IA (carro-chefe)
+### Lojista — criação via wizard de IA `[Futuro]`
+
+> Interface disponível na UI como botão desabilitado — sinaliza ao lojista que a funcionalidade está por vir.
 
 1. Lojista diz ou digita: **"nova expedição"**.
 2. IA inicia um bate-papo e faz perguntas em sequência:
    - Quem é o cliente?
    - Qual o produto / quantos volumes?
-   - Qual a baia?
+   - Qual o ponto?
    - Alguma observação?
 3. IA confirma o cliente (desambiguação se necessário) e os dados.
 4. Expedição é criada automaticamente.
-5. IA sugere ou cria o **plano de rota** agrupando expedições pendentes.
+5. IA sugere o **plano de rota** agrupando expedições pendentes por ponto/proximidade.
+6. **Lojista escolhe o entregador** e confirma o plano.
+   - _Evolução futura: IA atribui o entregador automaticamente com base em carga de trabalho e disponibilidade._
 
-### Lojista — criação manual
+### Lojista — criação manual `[MVP]`
 
-1. Lojista preenche formulário simples: cliente, volumes, baia.
+1. Lojista preenche formulário simples: cliente, volumes, ponto.
 2. Expedição é criada e entra na fila.
 
-### Entregador (app mobile)
+### Entregador (app mobile) `[MVP]`
+
+> **UX do app:** tela altamente intuitiva com botões grandes, pensada para uso em campo. O detalhamento de interface será feito na etapa de design. `[Design — fase futura]`
 
 1. Recebe o plano de entrega no celular (pode ser o dono da loja ou funcionário cadastrado).
-2. Faz a rota até as baias ou endereço de destino.
-3. Ao entregar, registra o **comprovante de entrega**:
+2. Faz a rota até os pontos.
+3. Ao entregar, registra o **comprovante de entrega**: `[MVP]`
    - Foto da mercadoria no local.
    - **Foto da assinatura** de quem recebeu (campo obrigatório — segurança jurídica).
-4. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador com:
-   - Confirmação de entrega.
-   - Foto da assinatura de quem recebeu.
-5. Volta e recebe o próximo plano.
+   - Entrega marcada como **concluída** no sistema.
+4. Se a entrega não puder ser concluída, registra uma **ocorrência** com motivo: `[MVP]`
+   - Comprador já foi embora (perdeu o prazo).
+   - Comprador recusou a mercadoria.
+   - Ponto não encontrado / endereço incorreto.
+   - Outro motivo.
+   - Volume retorna para a loja e entra no status **devolvido**.
+5. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador. `[Futuro — pós-MVP]`
+6. Volta e recebe o próximo plano.
+
+### Lojista — gestão pós-despacho `[MVP]`
+
+Após despachar o entregador, o lojista pode:
+
+- **Acompanhar o status** de cada entrega (a caminho / entregue / devolvida / ocorrência).
+- **Repriorizar entregas** — alterar manualmente a ordem do roteiro em andamento quando uma situação muda (ex: comprador avisa que está prestes a ir embora).
+- **Receber devoluções** — volumes que retornam ficam visíveis no painel com o motivo registrado; lojista decide o que fazer (reagendar, contatar o comprador, etc.).
+
+> **Repriorização automática pela IA** com base em alertas de prazo é evolução futura. `[Futuro]`
 
 ---
 
@@ -155,16 +279,27 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 | Termo | Definição |
 |---|---|
-| **Expedição** | Unidade de entrega — um ou mais volumes destinados a um comprador específico, a serem entregues na baia ou no endereço dele. Pode existir sem baia definida enquanto aguarda o comprador chegar. |
-| **Baia** | Local fixo no polo onde o comprador estaciona seu veículo e aguarda os volumes. |
-| **Expedição aguardando baia** | Estado de uma expedição criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
-| **Plano de entrega** | Conjunto de expedições agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA. |
+| **Expedição** | Registro de saída criado pelo lojista — pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. É o objeto que o lojista cadastra no sistema e que agrupa tudo que precisa ser despachado. Pode existir sem entregador atribuído enquanto aguarda o momento do roteiro. |
+| **Entrega** | Unidade individual dentro de uma expedição — um ou mais volumes destinados a **um comprador específico**, a serem entregues no ponto ou no endereço dele. Pode existir sem ponto definido enquanto aguarda o comprador chegar. |
+| **Ponto** | Entidade registrada no sistema que representa onde um comprador estaciona no polo e aguarda os volumes. Pode ser uma excursão (van/ônibus com múltiplos compradores) ou um comprador independente com veículo próprio. Possui nome, tipo, localização (setor + vaga), horário de partida e tempo médio de fila. |
+| **Localização do ponto** | Combinação de setor + vaga que define o endereço físico de um ponto no polo (ex: "Setor Laranja - Vaga 33"). Para entregas regionais, é o endereço completo do destino. |
+| **Setor** | Área do polo identificada por cor (Laranja, Verde, Branco, Azul, Vermelho, Amarelo). Cada setor tem coordenadas GPS e agrupa vários pontos. É a unidade primária de agrupamento para a roteirização. |
+| **Vaga** | Posição numerada dentro de um setor onde o veículo do comprador estaciona. Junto com o setor, forma a localização completa do ponto. |
+| **Excursão** | Tipo de ponto — van ou ônibus que traz múltiplos compradores de outra cidade ao polo. Tem horário de partida definido que funciona como prazo-limite para todas as entregas daquele ponto. |
+| **Comprador independente** | Tipo de ponto — comprador que chega com veículo próprio e estaciona numa vaga fixa. Pode ou não ter horário de saída definido. |
+| **Horário de partida** | Hora prevista em que o ponto (excursão ou comprador independente) deixa o polo. Define o prazo máximo de entrega. Entregas que chegam após esse horário resultam em mercadoria não recebida. |
+| **Prazo de entrega** | Derivado do horário de partida do ponto, descontado o tempo médio de fila. Usado pelo sistema para priorizar o roteiro. |
+| **Entrega aguardando ponto** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — o ponto será informado no dia da chegada. |
+| **Plano de entrega / Roteiro** | Conjunto de entregas agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA no momento do despacho. |
 | **Wizard de IA** | Interface conversacional (voz ou texto) que conduz o lojista por perguntas para criar uma expedição rapidamente. |
 | **Soft** | Sistema/software existente que o lojista já usa para registrar as compras dos clientes. |
 | **Lojista** | Dono ou operador da loja que despacha os volumes. |
 | **Entregador** | Pessoa cadastrada no sistema responsável por executar as entregas — pode ser o próprio dono da loja ou um funcionário. |
-| **Comprovante de entrega** | Registro obrigatório feito pelo entregador: foto da mercadoria + foto da assinatura de quem recebeu. Enviado ao comprador via WhatsApp/SMS. |
-| **Comprador** | Cliente do lojista; chega ao polo, compra e aguarda na baia. Não usa o sistema diretamente. |
+| **Comprovante de entrega** | Registro obrigatório feito pelo entregador ao concluir uma entrega: foto da mercadoria + foto da assinatura de quem recebeu. Marca a entrega como concluída no sistema. |
+| **Ocorrência** | Registro de uma entrega que não pôde ser concluída — com motivo (comprador ausente, recusa, ponto incorreto etc.). O volume retorna à loja com status de devolvido. |
+| **Devolução** | Volume que retornou à loja após uma tentativa de entrega malsucedida. Fica visível no painel do lojista com o motivo registrado para acompanhamento. |
+| **Repriorização** | Alteração manual da ordem do roteiro em andamento pelo lojista, quando uma situação muda (ex: comprador avisou que vai sair em breve). |
+| **Comprador** | Cliente do lojista; chega ao polo, compra e aguarda no ponto. Não usa o sistema diretamente. |
 | **Polo** | Área geográfica do mercado atacadista (ex: Santa Cruz do Capibaribe). |
 | **Volume** | Pacote físico individual (caixa, saco de nylon etc.). Uma expedição pode ter múltiplos volumes. |
 
@@ -172,16 +307,22 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 ## 8. Diferenciais
 
-### Wizard conversacional com IA — carro-chefe do produto
-A principal interface de criação de expedições é uma conversa com a IA — por voz ou texto. O lojista não precisa navegar em formulários: apenas diz "nova expedição" e responde as perguntas da IA. Isso elimina o maior gargalo operacional sem exigir alfabetização digital.
+### Wizard conversacional com IA `[Futuro]`
+Interface de criação de expedições via conversa com a IA — por voz ou texto. O lojista não precisa navegar em formulários: apenas diz "nova expedição" e responde as perguntas da IA. Elimina o maior gargalo operacional sem exigir alfabetização digital. No MVP, aparece como botão desabilitado na interface — sinaliza o diferencial futuro do produto sem bloquear o uso.
 
-### Desambiguação de clientes
+### Desambiguação de clientes `[MVP]`
 Quando o nome informado for genérico (ex: "Rafael de Alto Branco"), a IA apresenta os clientes correspondentes cadastrados para confirmação, evitando entregas erradas.
 
-### Criação automática do plano de rota
-Após registrar expedições, a IA sugere ou cria automaticamente um plano de rota otimizado para o entregador, agrupando entregas por proximidade de baia.
+### Sugestão de plano de rota pela IA `[MVP]`
+Após registrar expedições, a IA sugere um plano de rota considerando dois critérios simultaneamente:
+1. **Prazo de partida** — excursões com horário de saída mais próximo têm prioridade
+2. **Proximidade geográfica** — agrupamento por setor e vaga para minimizar deslocamento
 
-### Notificação de entrega via WhatsApp / SMS
+O lojista vê quais entregas estão urgentes (risco de perder a partida) e confirma o plano com o entregador.
+
+> **Atribuição manual pelo lojista é MVP.** A IA decidindo automaticamente o entregador com base em carga de trabalho e disponibilidade é uma evolução futura. `[Futuro]`
+
+### Notificação de entrega via WhatsApp / SMS `[Futuro — pós-MVP]`
 Quando o entregador registra o comprovante de entrega, o sistema dispara automaticamente uma notificação ao comprador com:
 - Confirmação de que a mercadoria foi entregue.
 - **Foto da assinatura** de quem recebeu (segurança para ambas as partes).
@@ -189,35 +330,68 @@ Quando o entregador registra o comprovante de entrega, o sistema dispara automat
 Canal de envio:
 - **WhatsApp**: preferencial, se o comprador tiver WhatsApp cadastrado.
 - **SMS**: fallback automático para compradores sem WhatsApp.
-- **Telefone obrigatório**: campo obrigatório no cadastro do comprador. Sem ele, a notificação não pode ser disparada.
+- **Telefone opcional**: o cadastro do comprador aceita ausência de telefone. Sem número, a notificação simplesmente não é disparada — o fluxo de entrega segue normalmente.
 
-### Simplicidade radical
+### Marketplace de entregadores da região `[Futuro]`
+Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
+
+### Gestão de ocorrências e devoluções `[MVP]`
+Quando uma entrega não pode ser concluída, o entregador registra o motivo no app. O volume entra automaticamente em status de devolvido e fica visível no painel do lojista. O lojista pode repriorizar manualmente entregas em andamento quando a situação mudar — como um comprador que avisou que está prestes a ir embora.
+
+> Repriorização automática pela IA com base em alertas de prazo é evolução futura. `[Futuro]`
+
+### Pontos pré-mapeados e sugestão automática de ponto `[MVP]`
+Compradores recorrentes têm pontos fixos pré-cadastrados no sistema (setor + número da vaga). Quando o nome do comprador é informado na expedição, o sistema sugere automaticamente o ponto habitual — eliminando digitação manual na maioria dos casos.
+
+### Simplicidade radical `[MVP]`
 Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve demandar o mínimo possível do lojista.
 
 ---
 
 ## 9. Restrições e Decisões de MVP
 
-| Decisão | Detalhe |
-|---|---|
-| **Escopo geográfico** | Santa Cruz do Capibaribe – PE (teste inicial) |
-| **Usuários de teste** | 2 lojistas |
-| **Foco absoluto** | Reduzir tempo de cadastro de expedições |
-| **Inputs do MVP** | Voz (wizard IA) + Manual |
-| **Fora do MVP** | Foto/OCR, integração com soft existente, relatórios, múltiplos CDs, notificações ao comprador |
-| **Concorrência** | Alta no setor geral; baixa no segmento de atacadistas de pequeno porte em polos regionais |
+| Decisão | MVP | Futuro |
+|---|---|---|
+| **Escopo geográfico** | Santa Cruz do Capibaribe – PE | Expansão para outros polos/regiões |
+| **Usuários de teste** | 2 lojistas — com estratégia diferenciada (ver abaixo) | — |
+| **Foco absoluto** | Reduzir tempo de cadastro de expedições | — |
+| **Inputs de expedição** | Manual (lojista 1); Manual + Voz/IA (lojista 2) | Foto/OCR, integração com soft existente |
+| **Atribuição do entregador** | Lojista atribui no momento do roteiro (já sabe quem vai entregar); expedição pode ficar "aguardando entregador" até o roteiro ser traçado | IA decide com base em carga e disponibilidade; marketplace de entregadores avulsos da região |
+| **Plano de rota** | IA sugere agrupamento por setor → vaga; lojista confirma | IA otimiza e distribui automaticamente |
+| **Roteirização** | Google Maps API para navegação até o setor; entregador usa referência de vaga para o ponto exato | Otimização automática entre múltiplos setores e vagas |
+| **Notificação ao comprador** | Fora do MVP | WhatsApp / SMS automático ao confirmar entrega |
+| **Relatórios operacionais** | Fora do MVP | Painel com métricas de desempenho |
+| **Múltiplos CDs** | Fora do MVP | Suporte a múltiplos centros de distribuição |
+| **Entregas regionais** | Fora do MVP — foco exclusivo em entregas locais no polo | Lojista usa veículo/frota própria; futuramente integração com transportadoras |
+| **App mobile** | PWA (browser) | App nativo (iOS/Android) |
+| **Conectividade** | Requer internet (tolerância a instabilidades pontuais) | Modo offline parcial com sincronização |
+| **Integração com soft existente** | Fora do MVP (arquitetura deve ser aberta a integrações desde o início) | API aberta para integração com sistemas de gestão do lojista — alta prioridade pós-MVP |
+| **Concorrência** | — | Alta no setor geral; baixa no segmento de atacadistas de pequeno porte em polos regionais |
+
+### Abordagem de validação
+
+O produto parte de hipóteses — o que achamos que vai funcionar. Quem vai lapidar essas hipóteses são os próprios lojistas usando o sistema gratuitamente. O objetivo nesta fase não é vender, mas **tornar o produto tão necessário que o uso manual se torne inaceitável** — criar dependência real onde hoje tudo é feito à mão com recursos pouco avançados.
+
+> **Monetização está fora de escopo neste momento.** A prioridade é testar, validar e refinar até o produto ser genuinamente indispensável.
+
+O modelo é iterativo e sequencial: cada lojista fornece feedbacks que alimentam ajustes antes do próximo. Com o tempo, isso constrói um banco de feedbacks e aprendizados que orienta a evolução do produto.
+
+### Estratégia de teste — ciclo inicial
+
+Os 2 lojistas iniciais são do mesmo contexto (mesmo polo), o que permite comparar resultados sem ruído de variáveis externas.
+
+| | Lojista 1 | Lojista 2 |
+|---|---|---|
+| **Foco** | Validar o fluxo core | Validar o diferencial de voz |
+| **Inputs disponíveis** | Somente manual | Manual + wizard de IA por voz |
+| **Formato** | MVP básico | Protótipo funcional |
+| **O que valida** | Se o cadastro manual já resolve o problema de velocidade; usabilidade real do formulário | Se a IA por voz reduz ainda mais a fricção; se o lojista adere ao modelo conversacional |
+| **Risco principal** | Formulário ainda ser lento demais | IA errar o cliente ou a baia e gerar retrabalho |
+
+Os feedbacks do lojista 1 informam os ajustes antes de lançar para o lojista 2. Os feedbacks do lojista 2 informam a entrada de um terceiro lojista — e assim por diante. O banco de feedbacks cresce a cada ciclo.
 
 ---
 
 ## 10. Em Aberto (perguntas não respondidas)
 
-- Para pedidos com antecedência: o comprador recebe uma notificação — mas em qual direção? O sistema manda uma mensagem pro comprador perguntando a baia quando ele chegar? Ou é o comprador que avisa o lojista por fora (WhatsApp manual) e o lojista atualiza no sistema?
-- Para entregas **regionais** (outras cidades), como funciona a logística? O entregador leva pessoalmente, entrega a uma transportadora, ou é outro modelo?
-- O telefone do comprador precisa estar cadastrado previamente para receber notificação via WhatsApp? Como esse número é capturado — no momento do pedido, ou já existe no "soft"?
-- Qual a proporção de entregas locais (baia) vs regionais numa manhã típica?
-- Quem atribui a expedição ao entregador — o lojista manualmente ou a IA faz isso automaticamente?
-- Quantas expedições um lojista cadastra numa manhã típica? (ordem de grandeza: 5, 20, 50?)
-- O entregador é funcionário fixo da loja ou prestador avulso?
-- O MVP será app mobile nativo ou PWA no browser?
-- O sistema precisa funcionar com conectividade ruim (offline parcial)?
-- O "soft" que o lojista usa hoje — há possibilidade de integração futura via API, ou é um sistema fechado?
+Todas as perguntas de discovery foram respondidas. Próximas questões surgirão nas etapas de design e desenvolvimento.

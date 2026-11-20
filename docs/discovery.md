@@ -26,16 +26,16 @@ O MVP será testado em **Santa Cruz do Capibaribe – PE**, um dos maiores polos
 O funcionamento do polo é o seguinte:
 
 - Compradores chegam cedo da manhã de van, ônibus, carro ou moto de diversas cidades do Nordeste.
-- Eles estacionam em locais específicos chamados de **baias** e saem para comprar produtos em diversas lojas.
-- Cada comprador visita múltiplas lojas, fecha pedidos e precisa que os volumes sejam entregues na sua baia antes de ir embora.
+- Eles estacionam em locais específicos chamados de **pontos** e saem para comprar produtos em diversas lojas.
+- Cada comprador visita múltiplas lojas, fecha pedidos e precisa que os volumes sejam entregues no seu ponto antes de ir embora.
 - O tempo disponível é curto — compradores não ficam esperando.
-- O lojista precisa organizar os pedidos de cada comprador e despachar os volumes rapidamente até as baias.
+- O lojista precisa organizar os pedidos de cada comprador e despachar os volumes rapidamente até os pontos.
 - Compras também podem ser feitas durante a semana ou dias antes — o lojista cria a embalagem e ela fica aguardando até o dia da entrega.
 - Uma expedição pode ter **múltiplos volumes/pacotes** para o mesmo destinatário.
 
-### Mapeamento geoespacial das baias
+### Mapeamento geoespacial dos pontos
 
-As baias do polo são estruturadas em **setores** identificados por cor, cada um com coordenadas GPS. Dentro de cada setor, há **vagas numeradas** por tipo de veículo. A hierarquia de navegação do entregador é:
+Os pontos do polo são estruturados em **setores** identificados por cor, cada um com coordenadas GPS. Dentro de cada setor, há **vagas numeradas** por tipo de veículo. A hierarquia de navegação do entregador é:
 
 ```
 Polo → Setor (cor + GPS) → Vaga (número) → Tipo de veículo
@@ -61,11 +61,11 @@ Tipos de vaga por veículo:
 | **Pesado** (ônibus) | ~30 min |
 | **Gerador** | ~20 min |
 
-**Compradores recorrentes têm vaga fixa.** Muitos compradores sempre estacionam na mesma vaga. Esses pontos podem ser pré-cadastrados e sugeridos automaticamente quando o comprador é selecionado — eliminando a necessidade de informar a baia manualmente na maioria dos casos.
+**Compradores recorrentes têm ponto fixo.** Muitos compradores sempre estacionam no mesmo ponto. Esses pontos podem ser pré-cadastrados e sugeridos automaticamente quando o comprador é selecionado — eliminando a necessidade de informar o ponto manualmente na maioria dos casos.
 
 **Google Maps API** é utilizado para roteirização entre loja e setor (GPS). A referência de vaga (`Setor Laranja - Vaga 33`) guia o entregador ao ponto exato dentro do setor.
 
-#### Modelo de dados sugerido para o ponto de entrega
+#### Modelo de dados do Ponto
 
 O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.json`) embute dados estruturados em texto livre — dificulta filtros e ordenação. O modelo recomendado para o sistema é separar os campos:
 
@@ -73,7 +73,7 @@ O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.j
 {
   "nome": "Abdon Turismo",
   "tipo": "excursao_interna",
-  "baia_padrao": {
+  "localizacao": {
     "setor": "laranja",
     "vaga": "33",
     "tipo_veiculo": "pesado"
@@ -88,12 +88,12 @@ Isso permite agrupar entregas por setor, ordenar por vaga dentro do setor e calc
 
 Cada van, carro ou ônibus que chega ao polo é uma **excursão** e tem um **horário de partida** definido. Dentro de uma mesma excursão viajam **múltiplos compradores** de diferentes cidades.
 
-Isso cria uma **restrição crítica de tempo**: a entrega de todos os volumes de um comprador precisa chegar à baia **antes do horário de partida da excursão** — caso contrário, o comprador vai embora sem a mercadoria.
+Isso cria uma **restrição crítica de tempo**: a entrega de todos os volumes de um comprador precisa chegar ao ponto **antes do horário de partida da excursão** — caso contrário, o comprador vai embora sem a mercadoria.
 
 | Conceito | Impacto operacional |
 |---|---|
-| Excursão com partida próxima | Entregadores precisam priorizar essas baias primeiro |
-| Múltiplos compradores na mesma excursão | Entregas para a mesma baia podem ser agrupadas numa única saída |
+| Excursão com partida próxima | Entregadores precisam priorizar esses pontos primeiro |
+| Múltiplos compradores na mesma excursão | Entregas para o mesmo ponto podem ser agrupadas numa única saída |
 | Tempo médio de fila por tipo de veículo | Vans (~15min), Pesado (~30min) — deve ser somado ao tempo de deslocamento para calcular a margem real |
 
 > O sistema deve exibir o **horário de partida** de cada excursão e alertar quando uma entrega corre risco de não chegar a tempo. O roteiro sugerido pela IA deve considerar os prazos — priorizando excursões com partida mais próxima.
@@ -106,7 +106,7 @@ Modelo de dados atualizado:
 {
   "nome": "Abdon Turismo",
   "tipo": "excursao_interna",
-  "baia_padrao": {
+  "localizacao": {
     "setor": "laranja",
     "vaga": "33",
     "tipo_veiculo": "pesado"
@@ -122,8 +122,8 @@ As expedições não são apenas intra-polo. Existem dois tipos:
 
 | Tipo | Descrição |
 |---|---|
-| **Local (baia)** | Entrega no polo, na baia onde o comprador estacionou o veículo. O entregador percorre distâncias curtas dentro da área do polo. |
-| **Regional** | Entrega para compradores que possuem loja física em outra cidade ou região. Os volumes são transportados pessoalmente pelos veículos próprios do lojista/entregador até o destino. |
+| **Local (ponto)** `[MVP]` | Entrega no polo, no ponto onde o comprador estacionou o veículo. O entregador percorre distâncias curtas dentro da área do polo. |
+| **Regional** `[Futuro]` | Entrega para compradores que possuem loja física em outra cidade ou região. Os volumes são transportados pessoalmente pelos veículos próprios do lojista/entregador até o destino. |
 
 ### Escala nos dias de pico
 
@@ -131,30 +131,30 @@ Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em
 
 ### Proporção local vs regional
 
-**~90% das entregas são locais (baia)** numa manhã típica. Entregas regionais são minoria e seguem outro ritmo operacional.
+**~90% das entregas são locais (ponto)** numa manhã típica. Entregas regionais são minoria e estão fora do escopo do MVP.
 
-### Entregas regionais — logística no MVP
+### Entregas regionais `[Futuro]`
 
-No MVP, considera-se que o lojista possui **veículo ou frota própria** para entregas regionais. O entregador (ou o próprio lojista) leva pessoalmente os volumes até o destino em outra cidade. Modelos alternativos (transportadoras, parceiros logísticos) são considerados evolução futura.
+O MVP foca exclusivamente em entregas locais no polo. Entregas regionais (outras cidades) serão endereçadas em versão futura. Quando implementadas, considera-se que o lojista possui veículo ou frota própria — o entregador leva pessoalmente os volumes ao destino.
 
-### Como a baia é informada
+### Como o ponto é informado
 
-A baia é comunicada pelo comprador ao lojista **geralmente no próprio dia**:
-- O comprador estaciona o veículo, sai para fazer as compras e, quando chega na loja do lojista, informa o pedido e onde está estacionado (baia).
-- Para pedidos com antecedência: o comprador chega ao polo e **comunica ao lojista em qual baia está** (geralmente por WhatsApp ou pessoalmente). A partir disso, o lojista identifica quais clientes estão naquele local e monta o roteiro de expedição para aquela baia.
+O ponto é comunicado pelo comprador ao lojista **geralmente no próprio dia**:
+- O comprador estaciona o veículo, sai para fazer as compras e, quando chega na loja do lojista, informa o pedido e em qual ponto está estacionado.
+- Para pedidos com antecedência: o comprador chega ao polo e **comunica ao lojista em qual ponto está** (geralmente por WhatsApp ou pessoalmente). A partir disso, o lojista identifica quais clientes estão naquele local e monta o roteiro de expedição para aquele ponto.
 
-> O sistema deve permitir que o lojista veja facilmente **quais clientes já informaram a baia** e quais ainda estão aguardando — para agrupar as entregas por destino e despachar de forma eficiente.
+> O sistema deve permitir que o lojista veja facilmente **quais clientes já informaram o ponto** e quais ainda estão aguardando — para agrupar as entregas por destino e despachar de forma eficiente.
 
-> **Canal de comunicação comprador → lojista:** A baia é informada **fora do sistema** — via WhatsApp (contato comercial) ou ligação telefônica. O lojista recebe a informação e atualiza manualmente no sistema. O produto não gerencia essa comunicação.
+> **Canal de comunicação comprador → lojista:** O ponto é informado **fora do sistema** — via WhatsApp (contato comercial) ou ligação telefônica. O lojista recebe a informação e atualiza manualmente no sistema. O produto não gerencia essa comunicação.
 
 ### Variações de fluxo por momento de compra
 
 | Situação | Descrição |
 |---|---|
-| **Compra no mesmo dia** | Comprador chega, faz o pedido e informa a baia. Lojista cria a expedição com baia já definida. |
-| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo, avisa o lojista em qual baia está. Lojista atualiza a baia e o sistema mostra quais outros clientes também estão naquela baia — facilitando o agrupamento do roteiro. |
+| **Compra no mesmo dia** | Comprador chega, faz o pedido e informa o ponto. Lojista cria a expedição com ponto já definido. |
+| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo, avisa o lojista em qual ponto está. Lojista atualiza o ponto e o sistema mostra quais outros clientes também estão naquele ponto — facilitando o agrupamento do roteiro. |
 
-Isso significa que uma expedição pode existir no sistema **sem baia definida** — aguardando o comprador chegar e informar. O sistema precisa representar esse estado.
+Isso significa que uma expedição pode existir no sistema **sem ponto definido** — aguardando o comprador chegar e informar. O sistema precisa representar esse estado.
 
 ---
 
@@ -170,7 +170,7 @@ Pode ser o próprio dono da loja ou um prestador avulso que o lojista já conhec
 Existem entregadores que circulam pela região sem vínculo fixo com nenhuma loja. No futuro, esses entregadores poderão acessar o sistema para ver quais lojas estão precisando de entrega no momento e se deslocar até lá para se disponibilizar — modelo similar a um marketplace de entregas localizado. Essa funcionalidade abre o produto para um novo tipo de usuário e um novo modelo operacional.
 
 ### Comprador (cliente do lojista)
-Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa sua baia ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
+Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa seu ponto ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
 
 > **Telefone é opcional no cadastro.** Compradores sem telefone são casos raros e minoritários. O cadastro simplesmente fica sem número — o fluxo de entrega não para, a notificação simplesmente não é disparada.
 
@@ -185,7 +185,7 @@ A compra pode ter sido registrada em um sistema (soft) existente, ou pode estar 
 **Exemplo real de dado mínimo numa embalagem:** `Rafael – Alto Branco – 3 peças`. Com dados tão genéricos, o sistema precisa identificar qual "Rafael" é esse — pode haver múltiplos clientes com o mesmo nome — e associá-lo ao cliente correto cadastrado.
 
 Outros problemas identificados:
-- Falta de roteirização entre loja → baias nas expedições.
+- Falta de roteirização entre loja → pontos nas expedições.
 - **Risco de perder o horário de partida das excursões** — sem visibilidade dos prazos, o lojista não sabe quais entregas são urgentes e pode priorizar errado, resultando em mercadoria que não embarca.
 - Sem registro de comprovante de entrega.
 - Sem visibilidade do status das entregas em tempo real.
@@ -213,7 +213,7 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 2. Lojista ou funcionário anota os dados manualmente (papel, WhatsApp, memória).
 3. Volumes são embalados e acumulados na loja.
 4. Lojista decide "na cabeça" quais volumes mandar de uma vez e chama o entregador.
-5. Entregador pega os volumes, faz a rota entre loja e baias, entrega um a um.
+5. Entregador pega os volumes, faz a rota entre loja e pontos, entrega um a um.
 6. Entregador volta, pega mais volumes, repete o ciclo várias vezes no mesmo dia.
 7. Nenhum comprovante formal de entrega. Sem rastreamento.
 
@@ -229,17 +229,17 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 2. IA inicia um bate-papo e faz perguntas em sequência:
    - Quem é o cliente?
    - Qual o produto / quantos volumes?
-   - Qual a baia?
+   - Qual o ponto?
    - Alguma observação?
 3. IA confirma o cliente (desambiguação se necessário) e os dados.
 4. Expedição é criada automaticamente.
-5. IA sugere o **plano de rota** agrupando expedições pendentes por baia/proximidade.
+5. IA sugere o **plano de rota** agrupando expedições pendentes por ponto/proximidade.
 6. **Lojista escolhe o entregador** e confirma o plano.
    - _Evolução futura: IA atribui o entregador automaticamente com base em carga de trabalho e disponibilidade._
 
 ### Lojista — criação manual `[MVP]`
 
-1. Lojista preenche formulário simples: cliente, volumes, baia.
+1. Lojista preenche formulário simples: cliente, volumes, ponto.
 2. Expedição é criada e entra na fila.
 
 ### Entregador (app mobile) `[MVP]`
@@ -247,7 +247,7 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 > **UX do app:** tela altamente intuitiva com botões grandes, pensada para uso em campo. O detalhamento de interface será feito na etapa de design. `[Design — fase futura]`
 
 1. Recebe o plano de entrega no celular (pode ser o dono da loja ou funcionário cadastrado).
-2. Faz a rota até as baias ou endereço de destino.
+2. Faz a rota até os pontos ou endereço de destino.
 3. Ao entregar, registra o **comprovante de entrega**:
    - Foto da mercadoria no local.
    - **Foto da assinatura** de quem recebeu (campo obrigatório — segurança jurídica).
@@ -263,22 +263,23 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 | Termo | Definição |
 |---|---|
 | **Expedição** | Registro de saída criado pelo lojista — pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. É o objeto que o lojista cadastra no sistema e que agrupa tudo que precisa ser despachado. Pode existir sem entregador atribuído enquanto aguarda o momento do roteiro. |
-| **Entrega** | Unidade individual dentro de uma expedição — um ou mais volumes destinados a **um comprador específico**, a serem entregues na baia ou no endereço dele. Pode existir sem baia definida enquanto aguarda o comprador chegar. |
-| **Baia** | Local fixo no polo onde o comprador estaciona seu veículo e aguarda os volumes. Identificada por setor + vaga (ex: "Setor Laranja - Vaga 33"). |
-| **Setor** | Área do polo identificada por cor (Laranja, Verde, Branco, Azul, Vermelho, Amarelo). Cada setor tem coordenadas GPS e agrupa várias vagas. É a unidade primária de agrupamento para a roteirização. |
-| **Vaga** | Posição numerada dentro de um setor onde o veículo do comprador estaciona. Junto com o setor, forma o endereço completo da baia. |
-| **Ponto de entrega** | Combinação de setor + vaga que identifica com precisão onde fazer a entrega local. Para entregas regionais, é o endereço completo do destino. |
-| **Excursão** | Carro, Van ou ônibus que traz compradores de outra cidade ao polo. Pode ter múltiplos compradores a bordo — cada um com suas próprias compras. Tem um horário de partida definido que funciona como prazo-limite para todas as entregas daquela excursão. |
-| **Horário de partida** | Hora prevista em que a excursão deixa o polo. Define o prazo máximo de entrega para todos os compradores que viajam nela. Entregas que chegam após esse horário resultam em mercadoria não recebida. |
-| **Prazo de entrega** | Derivado do horário de partida da excursão do comprador, descontado o tempo médio de fila na baia. Usado pelo sistema para priorizar o roteiro. |
-| **Entrega aguardando baia** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
+| **Entrega** | Unidade individual dentro de uma expedição — um ou mais volumes destinados a **um comprador específico**, a serem entregues no ponto ou no endereço dele. Pode existir sem ponto definido enquanto aguarda o comprador chegar. |
+| **Ponto** | Entidade registrada no sistema que representa onde um comprador estaciona no polo e aguarda os volumes. Pode ser uma excursão (van/ônibus com múltiplos compradores) ou um comprador independente com veículo próprio. Possui nome, tipo, localização (setor + vaga), horário de partida e tempo médio de fila. |
+| **Localização do ponto** | Combinação de setor + vaga que define o endereço físico de um ponto no polo (ex: "Setor Laranja - Vaga 33"). Para entregas regionais, é o endereço completo do destino. |
+| **Setor** | Área do polo identificada por cor (Laranja, Verde, Branco, Azul, Vermelho, Amarelo). Cada setor tem coordenadas GPS e agrupa vários pontos. É a unidade primária de agrupamento para a roteirização. |
+| **Vaga** | Posição numerada dentro de um setor onde o veículo do comprador estaciona. Junto com o setor, forma a localização completa do ponto. |
+| **Excursão** | Tipo de ponto — van ou ônibus que traz múltiplos compradores de outra cidade ao polo. Tem horário de partida definido que funciona como prazo-limite para todas as entregas daquele ponto. |
+| **Comprador independente** | Tipo de ponto — comprador que chega com veículo próprio e estaciona numa vaga fixa. Pode ou não ter horário de saída definido. |
+| **Horário de partida** | Hora prevista em que o ponto (excursão ou comprador independente) deixa o polo. Define o prazo máximo de entrega. Entregas que chegam após esse horário resultam em mercadoria não recebida. |
+| **Prazo de entrega** | Derivado do horário de partida do ponto, descontado o tempo médio de fila. Usado pelo sistema para priorizar o roteiro. |
+| **Entrega aguardando ponto** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — o ponto será informado no dia da chegada. |
 | **Plano de entrega / Roteiro** | Conjunto de entregas agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA no momento do despacho. |
 | **Wizard de IA** | Interface conversacional (voz ou texto) que conduz o lojista por perguntas para criar uma expedição rapidamente. |
 | **Soft** | Sistema/software existente que o lojista já usa para registrar as compras dos clientes. |
 | **Lojista** | Dono ou operador da loja que despacha os volumes. |
 | **Entregador** | Pessoa cadastrada no sistema responsável por executar as entregas — pode ser o próprio dono da loja ou um funcionário. |
 | **Comprovante de entrega** | Registro obrigatório feito pelo entregador: foto da mercadoria + foto da assinatura de quem recebeu. Enviado ao comprador via WhatsApp/SMS. |
-| **Comprador** | Cliente do lojista; chega ao polo, compra e aguarda na baia. Não usa o sistema diretamente. |
+| **Comprador** | Cliente do lojista; chega ao polo, compra e aguarda no ponto. Não usa o sistema diretamente. |
 | **Polo** | Área geográfica do mercado atacadista (ex: Santa Cruz do Capibaribe). |
 | **Volume** | Pacote físico individual (caixa, saco de nylon etc.). Uma expedição pode ter múltiplos volumes. |
 
@@ -314,8 +315,8 @@ Canal de envio:
 ### Marketplace de entregadores da região `[Futuro]`
 Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
 
-### Pontos pré-mapeados e sugestão automática de baia `[MVP]`
-Compradores recorrentes têm vagas fixas pré-cadastradas no sistema (setor + número da vaga). Quando o nome do comprador é informado na expedição, o sistema sugere automaticamente a baia habitual — eliminando digitação manual na maioria dos casos.
+### Pontos pré-mapeados e sugestão automática de ponto `[MVP]`
+Compradores recorrentes têm pontos fixos pré-cadastrados no sistema (setor + número da vaga). Quando o nome do comprador é informado na expedição, o sistema sugere automaticamente o ponto habitual — eliminando digitação manual na maioria dos casos.
 
 ### Simplicidade radical `[MVP]`
 Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve demandar o mínimo possível do lojista.
@@ -336,7 +337,7 @@ Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve dem
 | **Notificação ao comprador** | Fora do MVP | WhatsApp / SMS automático ao confirmar entrega |
 | **Relatórios operacionais** | Fora do MVP | Painel com métricas de desempenho |
 | **Múltiplos CDs** | Fora do MVP | Suporte a múltiplos centros de distribuição |
-| **Entregas regionais** | Lojista usa veículo ou frota própria | Integração com transportadoras/parceiros logísticos |
+| **Entregas regionais** | Fora do MVP — foco exclusivo em entregas locais no polo | Lojista usa veículo/frota própria; futuramente integração com transportadoras |
 | **App mobile** | PWA (browser) | App nativo (iOS/Android) |
 | **Conectividade** | Requer internet (tolerância a instabilidades pontuais) | Modo offline parcial com sincronização |
 | **Integração com soft existente** | Fora do MVP (arquitetura deve ser aberta a integrações desde o início) | API aberta para integração com sistemas de gestão do lojista — alta prioridade pós-MVP |

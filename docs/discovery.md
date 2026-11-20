@@ -71,7 +71,7 @@ O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.j
 
 ```json
 {
-  "comprador": "Abdon Turismo",
+  "nome": "Abdon Turismo",
   "tipo": "excursao_interna",
   "baia_padrao": {
     "setor": "laranja",
@@ -83,6 +83,38 @@ O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.j
 ```
 
 Isso permite agrupar entregas por setor, ordenar por vaga dentro do setor e calcular tempo estimado de espera na fila.
+
+### Excursões e horários de partida
+
+Cada van, carro ou ônibus que chega ao polo é uma **excursão** e tem um **horário de partida** definido. Dentro de uma mesma excursão viajam **múltiplos compradores** de diferentes cidades.
+
+Isso cria uma **restrição crítica de tempo**: a entrega de todos os volumes de um comprador precisa chegar à baia **antes do horário de partida da excursão** — caso contrário, o comprador vai embora sem a mercadoria.
+
+| Conceito | Impacto operacional |
+|---|---|
+| Excursão com partida próxima | Entregadores precisam priorizar essas baias primeiro |
+| Múltiplos compradores na mesma excursão | Entregas para a mesma baia podem ser agrupadas numa única saída |
+| Tempo médio de fila por tipo de veículo | Vans (~15min), Pesado (~30min) — deve ser somado ao tempo de deslocamento para calcular a margem real |
+
+> O sistema deve exibir o **horário de partida** de cada excursão e alertar quando uma entrega corre risco de não chegar a tempo. O roteiro sugerido pela IA deve considerar os prazos — priorizando excursões com partida mais próxima.
+
+O campo `horario_saida_padrao` já existe no arquivo de brainstorming (`geo-espacial-clientes.json`) mas está zerado. No sistema, esse horário deve ser cadastrado por excursão e servir como prazo-limite de entrega.
+
+Modelo de dados atualizado:
+
+```json
+{
+  "nome": "Abdon Turismo",
+  "tipo": "excursao_interna",
+  "baia_padrao": {
+    "setor": "laranja",
+    "vaga": "33",
+    "tipo_veiculo": "pesado"
+  },
+  "horario_saida": "14:00:00",
+  "tempo_medio_fila_minutos": 30
+}
+```
 
 ### Tipos de entrega
 
@@ -154,6 +186,7 @@ A compra pode ter sido registrada em um sistema (soft) existente, ou pode estar 
 
 Outros problemas identificados:
 - Falta de roteirização entre loja → baias nas expedições.
+- **Risco de perder o horário de partida das excursões** — sem visibilidade dos prazos, o lojista não sabe quais entregas são urgentes e pode priorizar errado, resultando em mercadoria que não embarca.
 - Sem registro de comprovante de entrega.
 - Sem visibilidade do status das entregas em tempo real.
 
@@ -235,6 +268,9 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 | **Setor** | Área do polo identificada por cor (Laranja, Verde, Branco, Azul, Vermelho, Amarelo). Cada setor tem coordenadas GPS e agrupa várias vagas. É a unidade primária de agrupamento para a roteirização. |
 | **Vaga** | Posição numerada dentro de um setor onde o veículo do comprador estaciona. Junto com o setor, forma o endereço completo da baia. |
 | **Ponto de entrega** | Combinação de setor + vaga que identifica com precisão onde fazer a entrega local. Para entregas regionais, é o endereço completo do destino. |
+| **Excursão** | Carro, Van ou ônibus que traz compradores de outra cidade ao polo. Pode ter múltiplos compradores a bordo — cada um com suas próprias compras. Tem um horário de partida definido que funciona como prazo-limite para todas as entregas daquela excursão. |
+| **Horário de partida** | Hora prevista em que a excursão deixa o polo. Define o prazo máximo de entrega para todos os compradores que viajam nela. Entregas que chegam após esse horário resultam em mercadoria não recebida. |
+| **Prazo de entrega** | Derivado do horário de partida da excursão do comprador, descontado o tempo médio de fila na baia. Usado pelo sistema para priorizar o roteiro. |
 | **Entrega aguardando baia** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
 | **Plano de entrega / Roteiro** | Conjunto de entregas agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA no momento do despacho. |
 | **Wizard de IA** | Interface conversacional (voz ou texto) que conduz o lojista por perguntas para criar uma expedição rapidamente. |
@@ -257,7 +293,11 @@ Interface de criação de expedições via conversa com a IA — por voz ou text
 Quando o nome informado for genérico (ex: "Rafael de Alto Branco"), a IA apresenta os clientes correspondentes cadastrados para confirmação, evitando entregas erradas.
 
 ### Sugestão de plano de rota pela IA `[MVP]`
-Após registrar expedições, a IA sugere um plano de rota agrupando entregas por proximidade de baia. O lojista revisa e confirma quem vai entregar.
+Após registrar expedições, a IA sugere um plano de rota considerando dois critérios simultaneamente:
+1. **Prazo de partida** — excursões com horário de saída mais próximo têm prioridade
+2. **Proximidade geográfica** — agrupamento por setor e vaga para minimizar deslocamento
+
+O lojista vê quais entregas estão urgentes (risco de perder a partida) e confirma o plano com o entregador.
 
 > **Atribuição manual pelo lojista é MVP.** A IA decidindo automaticamente o entregador com base em carga de trabalho e disponibilidade é uma evolução futura. `[Futuro]`
 

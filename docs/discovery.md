@@ -44,20 +44,30 @@ As expedições não são apenas intra-polo. Existem dois tipos:
 
 ### Escala nos dias de pico
 
-Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~40 expedições** (média de 2–3 volumes por expedição). Uma expedição é cadastrada de uma vez e pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 30 minutos, só o registro já consome mais de 1 hora.
+Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~50 expedições** (média de 2–3 volumes por expedição). Uma expedição é cadastrada de uma vez e pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 2 minutos, só o registro já consome mais de 1 hora e 40 minutos.
+
+### Proporção local vs regional
+
+**~90% das entregas são locais (baia)** numa manhã típica. Entregas regionais são minoria e seguem outro ritmo operacional.
+
+### Entregas regionais — logística no MVP
+
+No MVP, considera-se que o lojista possui **veículo ou frota própria** para entregas regionais. O entregador (ou o próprio lojista) leva pessoalmente os volumes até o destino em outra cidade. Modelos alternativos (transportadoras, parceiros logísticos) são considerados evolução futura.
 
 ### Como a baia é informada
 
 A baia é comunicada pelo comprador ao lojista **geralmente no próprio dia**:
 - O comprador estaciona o veículo, sai para fazer as compras e, quando chega na loja do lojista, informa o pedido e onde está estacionado (baia).
-- Em alguns casos, compradores que fizeram pedido com antecedência chegam ao polo em um dia específico e **notificam o lojista que estão aguardando na baia** — só então o lojista organiza e despacha a entrega.
+- Para pedidos com antecedência: o comprador chega ao polo e **comunica ao lojista em qual baia está** (geralmente por WhatsApp ou pessoalmente). A partir disso, o lojista identifica quais clientes estão naquele local e monta o roteiro de expedição para aquela baia.
+
+> O sistema deve permitir que o lojista veja facilmente **quais clientes já informaram a baia** e quais ainda estão aguardando — para agrupar as entregas por destino e despachar de forma eficiente.
 
 ### Variações de fluxo por momento de compra
 
 | Situação | Descrição |
 |---|---|
 | **Compra no mesmo dia** | Comprador chega, faz o pedido e informa a baia. Lojista cria a expedição com baia já definida. |
-| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo e avisa o lojista em qual baia está. Lojista atualiza a expedição com a baia e despacha. |
+| **Compra com antecedência (dias antes)** | Comprador fez o pedido anteriormente. O volume já está embalado. No dia combinado, comprador chega ao polo, avisa o lojista em qual baia está. Lojista atualiza a baia e o sistema mostra quais outros clientes também estão naquela baia — facilitando o agrupamento do roteiro. |
 
 Isso significa que uma expedição pode existir no sistema **sem baia definida** — aguardando o comprador chegar e informar. O sistema precisa representar esse estado.
 
@@ -76,6 +86,8 @@ Existem entregadores que circulam pela região sem vínculo fixo com nenhuma loj
 
 ### Comprador (cliente do lojista)
 Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa sua baia ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
+
+> **Telefone é opcional no cadastro.** Alguns compradores não possuem telefone cadastrado. O fluxo de entrega não pode depender do telefone para funcionar — a notificação é um complemento, não um requisito da operação.
 
 ---
 
@@ -199,7 +211,7 @@ Quando o entregador registra o comprovante de entrega, o sistema dispara automat
 Canal de envio:
 - **WhatsApp**: preferencial, se o comprador tiver WhatsApp cadastrado.
 - **SMS**: fallback automático para compradores sem WhatsApp.
-- **Telefone obrigatório**: campo obrigatório no cadastro do comprador. Sem ele, a notificação não pode ser disparada.
+- **Telefone opcional**: o cadastro do comprador aceita ausência de telefone. Sem número, a notificação simplesmente não é disparada — o fluxo de entrega segue normalmente.
 
 ### Marketplace de entregadores da região `[Futuro]`
 Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
@@ -222,6 +234,10 @@ Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve dem
 | **Notificação ao comprador** | Fora do MVP | WhatsApp / SMS automático ao confirmar entrega |
 | **Relatórios operacionais** | Fora do MVP | Painel com métricas de desempenho |
 | **Múltiplos CDs** | Fora do MVP | Suporte a múltiplos centros de distribuição |
+| **Entregas regionais** | Lojista usa veículo ou frota própria | Integração com transportadoras/parceiros logísticos |
+| **App mobile** | PWA (browser) | App nativo (iOS/Android) |
+| **Conectividade** | Requer internet (tolerância a instabilidades pontuais) | Modo offline parcial com sincronização |
+| **Integração com soft existente** | Fora do MVP (arquitetura deve ser aberta a integrações desde o início) | API aberta para integração com sistemas de gestão do lojista — alta prioridade pós-MVP |
 | **Concorrência** | — | Alta no setor geral; baixa no segmento de atacadistas de pequeno porte em polos regionais |
 
 ### Abordagem de validação
@@ -250,11 +266,8 @@ Os feedbacks do lojista 1 informam os ajustes antes de lançar para o lojista 2.
 
 ## 10. Em Aberto (perguntas não respondidas)
 
-- Para pedidos com antecedência: o comprador recebe uma notificação — mas em qual direção? O sistema manda uma mensagem pro comprador perguntando a baia quando ele chegar? Ou é o comprador que avisa o lojista por fora (WhatsApp manual) e o lojista atualiza no sistema?
-- Para entregas **regionais** (outras cidades), como funciona a logística? O entregador leva pessoalmente, entrega a uma transportadora, ou é outro modelo?
-- O telefone do comprador precisa estar cadastrado previamente para receber notificação via WhatsApp? Como esse número é capturado — no momento do pedido, ou já existe no "soft"?
-- Qual a proporção de entregas locais (baia) vs regionais numa manhã típica?
-- Quantas expedições um lojista cadastra numa manhã típica? (ordem de grandeza: 5, 20, 50?)
-- O MVP será app mobile nativo ou PWA no browser?
-- O sistema precisa funcionar com conectividade ruim (offline parcial)?
-- O "soft" que o lojista usa hoje — há possibilidade de integração futura via API, ou é um sistema fechado?
+Todas as perguntas anteriores foram respondidas. Novas questões a explorar:
+
+- Como o comprador vai comunicar a baia ao lojista no fluxo com antecedência — por fora (WhatsApp manual) ou o sistema terá um canal próprio de comunicação com o comprador?
+- Como capturar o telefone do comprador que não tem número — o cadastro simplesmente fica sem telefone ou há alguma alternativa de contato?
+- No MVP PWA, qual a experiência esperada para o entregador em campo — tela simples de confirmação ou algo mais elaborado?

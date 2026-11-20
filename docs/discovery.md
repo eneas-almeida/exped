@@ -44,7 +44,7 @@ As expedições não são apenas intra-polo. Existem dois tipos:
 
 ### Escala nos dias de pico
 
-Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~40 expedições** (média de 2–3 volumes por expedição). Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 2 minutos, só o registro já consome mais de 1 hora.
+Nos dias de maior movimento (ex: sexta-feira): **~100 pacotes** distribuídos em **~40 expedições** (média de 2–3 volumes por expedição). Uma expedição é cadastrada de uma vez e pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. Isso define que o cadastro de cada expedição precisa ser muito rápido — se cada expedição levar 30 minutos, só o registro já consome mais de 1 hora.
 
 ### Como a baia é informada
 
@@ -68,8 +68,11 @@ Isso significa que uma expedição pode existir no sistema **sem baia definida**
 ### Lojista
 Responsável por cadastrar as expedições, organizar os volumes e acionar o entregador. É o usuário com maior fricção no processo atual — pouco tempo, muitos pedidos simultâneos. Pode não ter familiaridade com tecnologia.
 
-### Entregador (pessoa que executa a entrega)
-Pode ser o próprio dono da loja ou um funcionário registrado. Quem for executar uma entrega **precisa estar cadastrado no sistema** — não é possível registrar uma entrega sem um entregador identificado. Usa celular durante o trabalho para registrar o comprovante.
+### Entregador (pessoa que executa a entrega) `[MVP]`
+Pode ser o próprio dono da loja ou um prestador avulso que o lojista já conhece e aciona diretamente. No MVP, o lojista sabe quem vai entregar — o entregador é cadastrado no sistema e a atribuição acontece no momento de traçar o roteiro, não no cadastro da expedição. Quem for executar uma entrega precisa estar cadastrado no sistema. Usa celular durante o trabalho para registrar o comprovante.
+
+### Entregador da região (autônomo avulso) `[Futuro]`
+Existem entregadores que circulam pela região sem vínculo fixo com nenhuma loja. No futuro, esses entregadores poderão acessar o sistema para ver quais lojas estão precisando de entrega no momento e se deslocar até lá para se disponibilizar — modelo similar a um marketplace de entregas localizado. Essa funcionalidade abre o produto para um novo tipo de usuário e um novo modelo operacional.
 
 ### Comprador (cliente do lojista)
 Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa sua baia ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
@@ -97,12 +100,12 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 | Origem | Descrição | Status |
 |---|---|---|
-| **Voz (wizard de IA)** | Lojista fala ou digita numa conversa com a IA, que faz as perguntas, confirma o cliente e cria a expedição | **MVP — carro-chefe** |
 | **Manual** | Formulário simples e eficiente para preenchimento direto | **MVP** |
-| **Foto / upload de imagem** | OCR lê texto manuscrito ou impresso em qualquer superfície (papel, saco, etiqueta) | **Futuro (pós-MVP)** |
-| **Integração com soft existente** | Puxa dados de compra já registrados no sistema do lojista | **Futuro (pós-MVP)** |
+| **Voz (wizard de IA)** | Lojista fala ou digita numa conversa com a IA, que faz as perguntas, confirma o cliente e cria a expedição. Na UI, aparece como botão desabilitado sinalizando funcionalidade futura. | **Futuro** |
+| **Foto / upload de imagem** | OCR lê texto manuscrito ou impresso em qualquer superfície (papel, saco, etiqueta) | **Futuro** |
+| **Integração com soft existente** | Puxa dados de compra já registrados no sistema do lojista | **Futuro** |
 
-> **Decisão de MVP:** Foto/OCR e integração com soft são implementações futuras. O MVP foca em **voz (wizard IA) + manual**.
+> **Decisão de MVP:** O MVP foca exclusivamente no **cadastro manual**. Voz, foto/OCR e integração com soft são implementações futuras — o wizard de voz aparece desabilitado na interface como prévia da funcionalidade.
 
 ---
 
@@ -120,7 +123,9 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 ## 6. Fluxo Proposto (com o produto)
 
-### Lojista — criação via wizard de IA (carro-chefe)
+### Lojista — criação via wizard de IA `[Futuro]`
+
+> Interface disponível na UI como botão desabilitado — sinaliza ao lojista que a funcionalidade está por vir.
 
 1. Lojista diz ou digita: **"nova expedição"**.
 2. IA inicia um bate-papo e faz perguntas em sequência:
@@ -130,21 +135,23 @@ Uma expedição pode ser criada a partir de três origens diferentes:
    - Alguma observação?
 3. IA confirma o cliente (desambiguação se necessário) e os dados.
 4. Expedição é criada automaticamente.
-5. IA sugere ou cria o **plano de rota** agrupando expedições pendentes.
+5. IA sugere o **plano de rota** agrupando expedições pendentes por baia/proximidade.
+6. **Lojista escolhe o entregador** e confirma o plano.
+   - _Evolução futura: IA atribui o entregador automaticamente com base em carga de trabalho e disponibilidade._
 
-### Lojista — criação manual
+### Lojista — criação manual `[MVP]`
 
 1. Lojista preenche formulário simples: cliente, volumes, baia.
 2. Expedição é criada e entra na fila.
 
-### Entregador (app mobile)
+### Entregador (app mobile) `[MVP]`
 
 1. Recebe o plano de entrega no celular (pode ser o dono da loja ou funcionário cadastrado).
 2. Faz a rota até as baias ou endereço de destino.
 3. Ao entregar, registra o **comprovante de entrega**:
    - Foto da mercadoria no local.
    - **Foto da assinatura** de quem recebeu (campo obrigatório — segurança jurídica).
-4. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador com:
+4. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador com: `[Futuro — pós-MVP]`
    - Confirmação de entrega.
    - Foto da assinatura de quem recebeu.
 5. Volta e recebe o próximo plano.
@@ -155,10 +162,11 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 | Termo | Definição |
 |---|---|
-| **Expedição** | Unidade de entrega — um ou mais volumes destinados a um comprador específico, a serem entregues na baia ou no endereço dele. Pode existir sem baia definida enquanto aguarda o comprador chegar. |
+| **Expedição** | Registro de saída criado pelo lojista — pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. É o objeto que o lojista cadastra no sistema e que agrupa tudo que precisa ser despachado. Pode existir sem entregador atribuído enquanto aguarda o momento do roteiro. |
+| **Entrega** | Unidade individual dentro de uma expedição — um ou mais volumes destinados a **um comprador específico**, a serem entregues na baia ou no endereço dele. Pode existir sem baia definida enquanto aguarda o comprador chegar. |
 | **Baia** | Local fixo no polo onde o comprador estaciona seu veículo e aguarda os volumes. |
-| **Expedição aguardando baia** | Estado de uma expedição criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
-| **Plano de entrega** | Conjunto de expedições agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA. |
+| **Entrega aguardando baia** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
+| **Plano de entrega / Roteiro** | Conjunto de entregas agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA no momento do despacho. |
 | **Wizard de IA** | Interface conversacional (voz ou texto) que conduz o lojista por perguntas para criar uma expedição rapidamente. |
 | **Soft** | Sistema/software existente que o lojista já usa para registrar as compras dos clientes. |
 | **Lojista** | Dono ou operador da loja que despacha os volumes. |
@@ -172,16 +180,18 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 
 ## 8. Diferenciais
 
-### Wizard conversacional com IA — carro-chefe do produto
-A principal interface de criação de expedições é uma conversa com a IA — por voz ou texto. O lojista não precisa navegar em formulários: apenas diz "nova expedição" e responde as perguntas da IA. Isso elimina o maior gargalo operacional sem exigir alfabetização digital.
+### Wizard conversacional com IA `[Futuro]`
+Interface de criação de expedições via conversa com a IA — por voz ou texto. O lojista não precisa navegar em formulários: apenas diz "nova expedição" e responde as perguntas da IA. Elimina o maior gargalo operacional sem exigir alfabetização digital. No MVP, aparece como botão desabilitado na interface — sinaliza o diferencial futuro do produto sem bloquear o uso.
 
-### Desambiguação de clientes
+### Desambiguação de clientes `[MVP]`
 Quando o nome informado for genérico (ex: "Rafael de Alto Branco"), a IA apresenta os clientes correspondentes cadastrados para confirmação, evitando entregas erradas.
 
-### Criação automática do plano de rota
-Após registrar expedições, a IA sugere ou cria automaticamente um plano de rota otimizado para o entregador, agrupando entregas por proximidade de baia.
+### Sugestão de plano de rota pela IA `[MVP]`
+Após registrar expedições, a IA sugere um plano de rota agrupando entregas por proximidade de baia. O lojista revisa e confirma quem vai entregar.
 
-### Notificação de entrega via WhatsApp / SMS
+> **Atribuição manual pelo lojista é MVP.** A IA decidindo automaticamente o entregador com base em carga de trabalho e disponibilidade é uma evolução futura. `[Futuro]`
+
+### Notificação de entrega via WhatsApp / SMS `[Futuro — pós-MVP]`
 Quando o entregador registra o comprovante de entrega, o sistema dispara automaticamente uma notificação ao comprador com:
 - Confirmação de que a mercadoria foi entregue.
 - **Foto da assinatura** de quem recebeu (segurança para ambas as partes).
@@ -191,21 +201,50 @@ Canal de envio:
 - **SMS**: fallback automático para compradores sem WhatsApp.
 - **Telefone obrigatório**: campo obrigatório no cadastro do comprador. Sem ele, a notificação não pode ser disparada.
 
-### Simplicidade radical
+### Marketplace de entregadores da região `[Futuro]`
+Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
+
+### Simplicidade radical `[MVP]`
 Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve demandar o mínimo possível do lojista.
 
 ---
 
 ## 9. Restrições e Decisões de MVP
 
-| Decisão | Detalhe |
-|---|---|
-| **Escopo geográfico** | Santa Cruz do Capibaribe – PE (teste inicial) |
-| **Usuários de teste** | 2 lojistas |
-| **Foco absoluto** | Reduzir tempo de cadastro de expedições |
-| **Inputs do MVP** | Voz (wizard IA) + Manual |
-| **Fora do MVP** | Foto/OCR, integração com soft existente, relatórios, múltiplos CDs, notificações ao comprador |
-| **Concorrência** | Alta no setor geral; baixa no segmento de atacadistas de pequeno porte em polos regionais |
+| Decisão | MVP | Futuro |
+|---|---|---|
+| **Escopo geográfico** | Santa Cruz do Capibaribe – PE | Expansão para outros polos/regiões |
+| **Usuários de teste** | 2 lojistas — com estratégia diferenciada (ver abaixo) | — |
+| **Foco absoluto** | Reduzir tempo de cadastro de expedições | — |
+| **Inputs de expedição** | Manual (lojista 1); Manual + Voz/IA (lojista 2) | Foto/OCR, integração com soft existente |
+| **Atribuição do entregador** | Lojista atribui no momento do roteiro (já sabe quem vai entregar); expedição pode ficar "aguardando entregador" até o roteiro ser traçado | IA decide com base em carga e disponibilidade; marketplace de entregadores avulsos da região |
+| **Plano de rota** | IA sugere agrupamento; lojista confirma | IA otimiza e distribui automaticamente |
+| **Notificação ao comprador** | Fora do MVP | WhatsApp / SMS automático ao confirmar entrega |
+| **Relatórios operacionais** | Fora do MVP | Painel com métricas de desempenho |
+| **Múltiplos CDs** | Fora do MVP | Suporte a múltiplos centros de distribuição |
+| **Concorrência** | — | Alta no setor geral; baixa no segmento de atacadistas de pequeno porte em polos regionais |
+
+### Abordagem de validação
+
+O produto parte de hipóteses — o que achamos que vai funcionar. Quem vai lapidar essas hipóteses são os próprios lojistas usando o sistema gratuitamente. O objetivo nesta fase não é vender, mas **tornar o produto tão necessário que o uso manual se torne inaceitável** — criar dependência real onde hoje tudo é feito à mão com recursos pouco avançados.
+
+> **Monetização está fora de escopo neste momento.** A prioridade é testar, validar e refinar até o produto ser genuinamente indispensável.
+
+O modelo é iterativo e sequencial: cada lojista fornece feedbacks que alimentam ajustes antes do próximo. Com o tempo, isso constrói um banco de feedbacks e aprendizados que orienta a evolução do produto.
+
+### Estratégia de teste — ciclo inicial
+
+Os 2 lojistas iniciais são do mesmo contexto (mesmo polo), o que permite comparar resultados sem ruído de variáveis externas.
+
+| | Lojista 1 | Lojista 2 |
+|---|---|---|
+| **Foco** | Validar o fluxo core | Validar o diferencial de voz |
+| **Inputs disponíveis** | Somente manual | Manual + wizard de IA por voz |
+| **Formato** | MVP básico | Protótipo funcional |
+| **O que valida** | Se o cadastro manual já resolve o problema de velocidade; usabilidade real do formulário | Se a IA por voz reduz ainda mais a fricção; se o lojista adere ao modelo conversacional |
+| **Risco principal** | Formulário ainda ser lento demais | IA errar o cliente ou a baia e gerar retrabalho |
+
+Os feedbacks do lojista 1 informam os ajustes antes de lançar para o lojista 2. Os feedbacks do lojista 2 informam a entrada de um terceiro lojista — e assim por diante. O banco de feedbacks cresce a cada ciclo.
 
 ---
 
@@ -215,9 +254,7 @@ Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve dem
 - Para entregas **regionais** (outras cidades), como funciona a logística? O entregador leva pessoalmente, entrega a uma transportadora, ou é outro modelo?
 - O telefone do comprador precisa estar cadastrado previamente para receber notificação via WhatsApp? Como esse número é capturado — no momento do pedido, ou já existe no "soft"?
 - Qual a proporção de entregas locais (baia) vs regionais numa manhã típica?
-- Quem atribui a expedição ao entregador — o lojista manualmente ou a IA faz isso automaticamente?
 - Quantas expedições um lojista cadastra numa manhã típica? (ordem de grandeza: 5, 20, 50?)
-- O entregador é funcionário fixo da loja ou prestador avulso?
 - O MVP será app mobile nativo ou PWA no browser?
 - O sistema precisa funcionar com conectividade ruim (offline parcial)?
 - O "soft" que o lojista usa hoje — há possibilidade de integração futura via API, ou é um sistema fechado?

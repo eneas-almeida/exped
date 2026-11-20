@@ -188,6 +188,8 @@ Outros problemas identificados:
 - Falta de roteirização entre loja → pontos nas expedições.
 - **Risco de perder o horário de partida das excursões** — sem visibilidade dos prazos, o lojista não sabe quais entregas são urgentes e pode priorizar errado, resultando em mercadoria que não embarca.
 - Sem registro de comprovante de entrega.
+- **Sem rastreamento de devoluções** — volumes que voltam somem do controle; ninguém sabe o que retornou, por qual motivo ou o que fazer com eles.
+- **Sem capacidade de repriorizar** — se um comprador avisa que vai embora em breve, o lojista não tem como reordenar o roteiro do entregador que já saiu.
 - Sem visibilidade do status das entregas em tempo real.
 
 ---
@@ -247,14 +249,29 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 > **UX do app:** tela altamente intuitiva com botões grandes, pensada para uso em campo. O detalhamento de interface será feito na etapa de design. `[Design — fase futura]`
 
 1. Recebe o plano de entrega no celular (pode ser o dono da loja ou funcionário cadastrado).
-2. Faz a rota até os pontos ou endereço de destino.
-3. Ao entregar, registra o **comprovante de entrega**:
+2. Faz a rota até os pontos.
+3. Ao entregar, registra o **comprovante de entrega**: `[MVP]`
    - Foto da mercadoria no local.
    - **Foto da assinatura** de quem recebeu (campo obrigatório — segurança jurídica).
-4. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador com: `[Futuro — pós-MVP]`
-   - Confirmação de entrega.
-   - Foto da assinatura de quem recebeu.
-5. Volta e recebe o próximo plano.
+   - Entrega marcada como **concluída** no sistema.
+4. Se a entrega não puder ser concluída, registra uma **ocorrência** com motivo: `[MVP]`
+   - Comprador já foi embora (perdeu o prazo).
+   - Comprador recusou a mercadoria.
+   - Ponto não encontrado / endereço incorreto.
+   - Outro motivo.
+   - Volume retorna para a loja e entra no status **devolvido**.
+5. Sistema dispara automaticamente mensagem WhatsApp (ou SMS) ao comprador. `[Futuro — pós-MVP]`
+6. Volta e recebe o próximo plano.
+
+### Lojista — gestão pós-despacho `[MVP]`
+
+Após despachar o entregador, o lojista pode:
+
+- **Acompanhar o status** de cada entrega (a caminho / entregue / devolvida / ocorrência).
+- **Repriorizar entregas** — alterar manualmente a ordem do roteiro em andamento quando uma situação muda (ex: comprador avisa que está prestes a ir embora).
+- **Receber devoluções** — volumes que retornam ficam visíveis no painel com o motivo registrado; lojista decide o que fazer (reagendar, contatar o comprador, etc.).
+
+> **Repriorização automática pela IA** com base em alertas de prazo é evolução futura. `[Futuro]`
 
 ---
 
@@ -278,7 +295,10 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 | **Soft** | Sistema/software existente que o lojista já usa para registrar as compras dos clientes. |
 | **Lojista** | Dono ou operador da loja que despacha os volumes. |
 | **Entregador** | Pessoa cadastrada no sistema responsável por executar as entregas — pode ser o próprio dono da loja ou um funcionário. |
-| **Comprovante de entrega** | Registro obrigatório feito pelo entregador: foto da mercadoria + foto da assinatura de quem recebeu. Enviado ao comprador via WhatsApp/SMS. |
+| **Comprovante de entrega** | Registro obrigatório feito pelo entregador ao concluir uma entrega: foto da mercadoria + foto da assinatura de quem recebeu. Marca a entrega como concluída no sistema. |
+| **Ocorrência** | Registro de uma entrega que não pôde ser concluída — com motivo (comprador ausente, recusa, ponto incorreto etc.). O volume retorna à loja com status de devolvido. |
+| **Devolução** | Volume que retornou à loja após uma tentativa de entrega malsucedida. Fica visível no painel do lojista com o motivo registrado para acompanhamento. |
+| **Repriorização** | Alteração manual da ordem do roteiro em andamento pelo lojista, quando uma situação muda (ex: comprador avisou que vai sair em breve). |
 | **Comprador** | Cliente do lojista; chega ao polo, compra e aguarda no ponto. Não usa o sistema diretamente. |
 | **Polo** | Área geográfica do mercado atacadista (ex: Santa Cruz do Capibaribe). |
 | **Volume** | Pacote físico individual (caixa, saco de nylon etc.). Uma expedição pode ter múltiplos volumes. |
@@ -314,6 +334,11 @@ Canal de envio:
 
 ### Marketplace de entregadores da região `[Futuro]`
 Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
+
+### Gestão de ocorrências e devoluções `[MVP]`
+Quando uma entrega não pode ser concluída, o entregador registra o motivo no app. O volume entra automaticamente em status de devolvido e fica visível no painel do lojista. O lojista pode repriorizar manualmente entregas em andamento quando a situação mudar — como um comprador que avisou que está prestes a ir embora.
+
+> Repriorização automática pela IA com base em alertas de prazo é evolução futura. `[Futuro]`
 
 ### Pontos pré-mapeados e sugestão automática de ponto `[MVP]`
 Compradores recorrentes têm pontos fixos pré-cadastrados no sistema (setor + número da vaga). Quando o nome do comprador é informado na expedição, o sistema sugere automaticamente o ponto habitual — eliminando digitação manual na maioria dos casos.

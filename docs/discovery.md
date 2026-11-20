@@ -62,6 +62,8 @@ A baia é comunicada pelo comprador ao lojista **geralmente no próprio dia**:
 
 > O sistema deve permitir que o lojista veja facilmente **quais clientes já informaram a baia** e quais ainda estão aguardando — para agrupar as entregas por destino e despachar de forma eficiente.
 
+> **Canal de comunicação comprador → lojista:** A baia é informada **fora do sistema** — via WhatsApp (contato comercial) ou ligação telefônica. O lojista recebe a informação e atualiza manualmente no sistema. O produto não gerencia essa comunicação.
+
 ### Variações de fluxo por momento de compra
 
 | Situação | Descrição |
@@ -87,7 +89,7 @@ Existem entregadores que circulam pela região sem vínculo fixo com nenhuma loj
 ### Comprador (cliente do lojista)
 Pode ser um comprador pessoa física ou dono de loja física em outra cidade/região. Chega ao polo de manhã (ou fez pedido dias antes), informa sua baia ao lojista e aguarda os volumes. **Não usa o sistema diretamente**, mas é o destinatário final das expedições — e pode receber uma notificação via WhatsApp quando a entrega for confirmada.
 
-> **Telefone é opcional no cadastro.** Alguns compradores não possuem telefone cadastrado. O fluxo de entrega não pode depender do telefone para funcionar — a notificação é um complemento, não um requisito da operação.
+> **Telefone é opcional no cadastro.** Compradores sem telefone são casos raros e minoritários. O cadastro simplesmente fica sem número — o fluxo de entrega não para, a notificação simplesmente não é disparada.
 
 ---
 
@@ -157,6 +159,8 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 2. Expedição é criada e entra na fila.
 
 ### Entregador (app mobile) `[MVP]`
+
+> **UX do app:** tela altamente intuitiva com botões grandes, pensada para uso em campo. O detalhamento de interface será feito na etapa de design. `[Design — fase futura]`
 
 1. Recebe o plano de entrega no celular (pode ser o dono da loja ou funcionário cadastrado).
 2. Faz a rota até as baias ou endereço de destino.
@@ -266,8 +270,4 @@ Os feedbacks do lojista 1 informam os ajustes antes de lançar para o lojista 2.
 
 ## 10. Em Aberto (perguntas não respondidas)
 
-Todas as perguntas anteriores foram respondidas. Novas questões a explorar:
-
-- Como o comprador vai comunicar a baia ao lojista no fluxo com antecedência — por fora (WhatsApp manual) ou o sistema terá um canal próprio de comunicação com o comprador?
-- Como capturar o telefone do comprador que não tem número — o cadastro simplesmente fica sem telefone ou há alguma alternativa de contato?
-- No MVP PWA, qual a experiência esperada para o entregador em campo — tela simples de confirmação ou algo mais elaborado?
+Todas as perguntas de discovery foram respondidas. Próximas questões surgirão nas etapas de design e desenvolvimento.

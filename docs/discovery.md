@@ -33,6 +33,57 @@ O funcionamento do polo é o seguinte:
 - Compras também podem ser feitas durante a semana ou dias antes — o lojista cria a embalagem e ela fica aguardando até o dia da entrega.
 - Uma expedição pode ter **múltiplos volumes/pacotes** para o mesmo destinatário.
 
+### Mapeamento geoespacial das baias
+
+As baias do polo são estruturadas em **setores** identificados por cor, cada um com coordenadas GPS. Dentro de cada setor, há **vagas numeradas** por tipo de veículo. A hierarquia de navegação do entregador é:
+
+```
+Polo → Setor (cor + GPS) → Vaga (número) → Tipo de veículo
+```
+
+Setores mapeados em Santa Cruz do Capibaribe:
+
+| Setor | Cor | Lat | Lng |
+|---|---|---|---|
+| Laranja | 🟠 | -7.94935 | -36.22620 |
+| Verde | 🟢 | -7.94900 | -36.22615 |
+| Branco | ⚪ | -7.94885 | -36.22650 |
+| Azul | 🔵 | -7.94930 | -36.22685 |
+| Vermelho | 🔴 | -7.94920 | -36.22665 |
+| Amarelo | 🟡 | -7.94898 | -36.22690 |
+| Estacionamento Excursões | — | -7.94820 | -36.22750 |
+
+Tipos de vaga por veículo:
+
+| Tipo | Tempo médio de fila |
+|---|---|
+| **Vans** | ~15 min |
+| **Pesado** (ônibus) | ~30 min |
+| **Gerador** | ~20 min |
+
+**Compradores recorrentes têm vaga fixa.** Muitos compradores sempre estacionam na mesma vaga. Esses pontos podem ser pré-cadastrados e sugeridos automaticamente quando o comprador é selecionado — eliminando a necessidade de informar a baia manualmente na maioria dos casos.
+
+**Google Maps API** é utilizado para roteirização entre loja e setor (GPS). A referência de vaga (`Setor Laranja - Vaga 33`) guia o entregador ao ponto exato dentro do setor.
+
+#### Modelo de dados sugerido para o ponto de entrega
+
+O campo `setor_vaga_texto` do arquivo de brainstorming (`geo-espacial-clientes.json`) embute dados estruturados em texto livre — dificulta filtros e ordenação. O modelo recomendado para o sistema é separar os campos:
+
+```json
+{
+  "comprador": "Abdon Turismo",
+  "tipo": "excursao_interna",
+  "baia_padrao": {
+    "setor": "laranja",
+    "vaga": "33",
+    "tipo_veiculo": "pesado"
+  },
+  "tempo_medio_fila_minutos": 30
+}
+```
+
+Isso permite agrupar entregas por setor, ordenar por vaga dentro do setor e calcular tempo estimado de espera na fila.
+
 ### Tipos de entrega
 
 As expedições não são apenas intra-polo. Existem dois tipos:
@@ -180,7 +231,10 @@ Uma expedição pode ser criada a partir de três origens diferentes:
 |---|---|
 | **Expedição** | Registro de saída criado pelo lojista — pode conter **1 ou dezenas de entregas individuais** para diferentes destinatários. É o objeto que o lojista cadastra no sistema e que agrupa tudo que precisa ser despachado. Pode existir sem entregador atribuído enquanto aguarda o momento do roteiro. |
 | **Entrega** | Unidade individual dentro de uma expedição — um ou mais volumes destinados a **um comprador específico**, a serem entregues na baia ou no endereço dele. Pode existir sem baia definida enquanto aguarda o comprador chegar. |
-| **Baia** | Local fixo no polo onde o comprador estaciona seu veículo e aguarda os volumes. |
+| **Baia** | Local fixo no polo onde o comprador estaciona seu veículo e aguarda os volumes. Identificada por setor + vaga (ex: "Setor Laranja - Vaga 33"). |
+| **Setor** | Área do polo identificada por cor (Laranja, Verde, Branco, Azul, Vermelho, Amarelo). Cada setor tem coordenadas GPS e agrupa várias vagas. É a unidade primária de agrupamento para a roteirização. |
+| **Vaga** | Posição numerada dentro de um setor onde o veículo do comprador estaciona. Junto com o setor, forma o endereço completo da baia. |
+| **Ponto de entrega** | Combinação de setor + vaga que identifica com precisão onde fazer a entrega local. Para entregas regionais, é o endereço completo do destino. |
 | **Entrega aguardando baia** | Estado de uma entrega criada com antecedência cujo comprador ainda não chegou ao polo — a baia será informada no dia da chegada. |
 | **Plano de entrega / Roteiro** | Conjunto de entregas agrupadas para o entregador executar em uma saída. Criado/sugerido pela IA no momento do despacho. |
 | **Wizard de IA** | Interface conversacional (voz ou texto) que conduz o lojista por perguntas para criar uma expedição rapidamente. |
@@ -220,6 +274,9 @@ Canal de envio:
 ### Marketplace de entregadores da região `[Futuro]`
 Entregadores autônomos que circulam pelo polo poderão ver em tempo real quais lojas estão com expedições prontas aguardando entregador e se deslocar para se oferecer. Lojistas passam a ter acesso a um pool de entregadores disponíveis, sem precisar manter vínculo fixo com nenhum deles.
 
+### Pontos pré-mapeados e sugestão automática de baia `[MVP]`
+Compradores recorrentes têm vagas fixas pré-cadastradas no sistema (setor + número da vaga). Quando o nome do comprador é informado na expedição, o sistema sugere automaticamente a baia habitual — eliminando digitação manual na maioria dos casos.
+
 ### Simplicidade radical `[MVP]`
 Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve demandar o mínimo possível do lojista.
 
@@ -234,7 +291,8 @@ Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve dem
 | **Foco absoluto** | Reduzir tempo de cadastro de expedições | — |
 | **Inputs de expedição** | Manual (lojista 1); Manual + Voz/IA (lojista 2) | Foto/OCR, integração com soft existente |
 | **Atribuição do entregador** | Lojista atribui no momento do roteiro (já sabe quem vai entregar); expedição pode ficar "aguardando entregador" até o roteiro ser traçado | IA decide com base em carga e disponibilidade; marketplace de entregadores avulsos da região |
-| **Plano de rota** | IA sugere agrupamento; lojista confirma | IA otimiza e distribui automaticamente |
+| **Plano de rota** | IA sugere agrupamento por setor → vaga; lojista confirma | IA otimiza e distribui automaticamente |
+| **Roteirização** | Google Maps API para navegação até o setor; entregador usa referência de vaga para o ponto exato | Otimização automática entre múltiplos setores e vagas |
 | **Notificação ao comprador** | Fora do MVP | WhatsApp / SMS automático ao confirmar entrega |
 | **Relatórios operacionais** | Fora do MVP | Painel com métricas de desempenho |
 | **Múltiplos CDs** | Fora do MVP | Suporte a múltiplos centros de distribuição |

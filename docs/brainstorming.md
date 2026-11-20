@@ -2,6 +2,8 @@
 
 Todo o material de ideação e referência do produto está em [`media/brainstorming/`](../media/brainstorming/).
 
+> Para o registro vivo das discussões de discovery (contexto operacional, fluxos, glossário), veja [docs/discovery.md](discovery.md).
+
 ---
 
 ## Documentos

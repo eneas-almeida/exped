@@ -29,3 +29,7 @@ Consulte [docs/planejamento.md](docs/planejamento.md) para o plano de produto em
 ## Brainstorming
 
 Consulte [docs/brainstorming.md](docs/brainstorming.md) para o índice completo do material de ideação e referência do produto.
+
+## Discovery
+
+Consulte [docs/discovery.md](docs/discovery.md) para o registro vivo do processo de descoberta do produto: contexto operacional, usuários, fluxos, glossário e decisões de MVP.

@@ -39,14 +39,30 @@ Etapa 2 do planejamento. Produzido com base no [discovery.md](discovery.md) e na
 
 Gerencia o ciclo de vida completo de uma expedição: desde a criação pelo lojista até a conclusão ou devolução de cada entrega individual.
 
+### Campos de uma entrega
+
+| Campo | Tipo | Obrigatório | Observação |
+|---|---|---|---|
+| **Cliente** | autocomplete | Sim | Busca progressiva nos compradores da loja; opção de cadastrar novo inline se não encontrar |
+| **Cidade / Estado** | autocomplete | Sim | Base de cidades externa (IBGE); aceita só cidades válidas |
+| **Excursão / Transportadora** | autocomplete + `+` | Sim | Lista de M5; botão `+` abre cadastro rápido sem sair da tela |
+| **Volumes** | número | Sim | Padrão 1 |
+| **Tamanho** | toggle P / M / G | Sim | Informativo — sem impacto em regras de negócio ou roteirização |
+| **Horário limite** | data + hora | Não | Prazo da entrega; usado no cálculo de urgência em M2 |
+| **Observação** | texto livre | Não | Campo livre para o lojista |
+
+> Os três campos com autocomplete (Cliente, Cidade, Excursão) exibem sugestões abaixo conforme o lojista digita — a mesma lista de dados que o modo de voz (futuro) usará para resolver termos falados em registros estruturados.
+
 ### O que pertence a este módulo
 
+- Abertura e fechamento manual da expedição pelo lojista
 - Criação de expedições com uma ou mais entregas
-- Associação de comprador e volumes a cada entrega
+- Associação de comprador, volumes, tamanho, cidade e excursão a cada entrega
 - Definição ou atualização do ponto de destino de uma entrega
 - Controle de status de cada entrega (`aguardando_ponto → pronta → em_rota → entregue / devolvida`)
 - Controle de status da expedição (`rascunho → pronta → despachada → concluída`)
 - Visualização do painel de status para o lojista
+- Listagem de entregas cadastradas na expedição em aberto (com nome, cidade, excursão, volumes, tamanho, prazo e entregador)
 
 ### Atores
 
@@ -193,24 +209,43 @@ Mantém o cadastro de compradores da loja, serve como base para busca e desambig
 
 ### O que faz
 
-Mantém o mapa canônico do polo: setores com coordenadas GPS, vagas por tipo de veículo, pontos (excursões e compradores independentes) e seus horários de partida. É a fonte de verdade para endereçamento físico e cálculo de prazos.
+Mantém o mapa canônico do polo: setores com coordenadas GPS, vagas por tipo de veículo e excursões (pontos de coleta) com seus horários de partida. É a fonte de verdade para endereçamento físico e cálculo de prazos.
+
+### Estrutura de uma excursão
+
+| Campo | Tipo | Observação |
+|---|---|---|
+| **Nome** | texto | Ex.: "Abdon Turismo", "Recife Moda" |
+| **Tipo** | enum fixo | `Excursão` / `Transportadora` / `Individual` — valores fixos no banco, não cadastráveis |
+| **Setor** | referência | Ex.: "laranja", "azul" — setor do polo onde o ponto fica |
+| **Vaga** | texto | Ex.: "33" — vaga dentro do setor |
+| **Tipo de veículo** | enum | Ex.: "pesado", "leve" |
+| **Horário de saída** | hora | Partida do ponto; base para cálculo de prazo |
+
+### Excursões do sistema vs. excursões da loja
+
+| Origem | Quem cria | Visibilidade |
+|---|---|---|
+| **Sistema** | Administrador do polo | Disponível para todas as lojas |
+| **Loja** | Lojista (via modal `+` na tela de entrega) | Privada — só aparece para a loja que criou |
 
 ### O que pertence a este módulo
 
-- Cadastro de setores (cor, coordenadas GPS)
-- Cadastro de pontos com localização (setor + vaga + tipo de veículo)
-- Horário de partida e tempo médio de fila por ponto
-- Cálculo de prazo efetivo: `horarioPartida - tempoMedioFila`
+- Cadastro de setores (cor, coordenadas GPS) — dados fixos do polo
+- Excursões do sistema: pré-cadastradas pelo polo, visíveis a todas as lojas
+- Excursões da loja: cadastradas pelo lojista, privadas da loja
+- Horário de saída e cálculo de prazo efetivo por excursão
+- Cálculo de prazo efetivo: `horarioSaida - tempoMedioFila`
 - Atualização de ponto em campo pelo entregador (quando o comprador informa localização diferente)
-- Listagem de pontos para seleção no cadastro de entrega
+- Listagem de excursões disponíveis para seleção no cadastro de entrega (sistema + da loja)
 
 ### Atores
 
 | Ator | Interação |
 |---|---|
-| **Lojista** | Cadastra e mantém pontos e horários de excursões |
+| **Lojista** | Cadastra excursões específicas da loja; atualiza horários quando necessário |
 | **Entregador** | Consulta ponto no app; pode corrigir localização em campo |
-| **Sistema** | Consulta ponto e prazo ao gerar plano (M2) e ao definir ponto na entrega (M1) |
+| **Sistema** | Consulta excursão e prazo ao gerar plano (M2) e ao definir ponto na entrega (M1) |
 
 ### Dependências
 
@@ -218,10 +253,12 @@ Nenhuma — M5 é o módulo base, consultado pelos demais. Consome Google Maps A
 
 ### Regras críticas
 
+- Os tipos de excursão (Excursão, Transportadora, Individual) são enum fixo no banco — o lojista seleciona, não cadastra tipos novos.
+- Excursões do sistema são visíveis para todas as lojas; excursões da loja são privadas.
 - O prazo efetivo é calculado pelo sistema — nunca informado manualmente.
-- A correção de ponto em campo pelo entregador é registrada no histórico do ponto.
+- A correção de ponto em campo pelo entregador é registrada no histórico da excursão.
 - Os setores e suas coordenadas GPS são dados fixos do polo (raramente mudam).
-- O horário de partida é por ponto/excursão — pode ser atualizado pelo lojista quando o comprador avisa que vai sair antes.
+- O horário de saída pode ser atualizado pelo lojista quando o comprador avisa que vai sair antes.
 
 ---
 
@@ -229,13 +266,17 @@ Nenhuma — M5 é o módulo base, consultado pelos demais. Consome Google Maps A
 
 ### O que faz
 
-Autentica lojistas e entregadores com fluxos simples e rápidos, pensados para usuários com baixa familiaridade com tecnologia. Conduz o lojista por um wizard de primeiro acesso que configura a loja, as coordenadas e o primeiro entregador antes de entrar no sistema.
+Autentica lojistas e entregadores em um app único, com tela de login unificada. O sistema identifica o papel do usuário pelas credenciais e redireciona automaticamente para o painel correto. Conduz o lojista por um wizard de primeiro acesso que configura a loja, as coordenadas e o primeiro entregador antes de entrar no sistema.
+
+> **Comprador não tem conta no sistema.** É apenas um registro de dados gerenciado pelo lojista. Nenhum acesso ao app.
 
 ---
 
-### Lojista — login
+### Login único — detecção automática de papel
 
-O lojista pode entrar com qualquer uma das três formas:
+Uma tela de login serve para lojistas e entregadores. O sistema detecta o papel pelas credenciais e persiste na sessão.
+
+**Lojista** — pode entrar com qualquer uma das três formas:
 
 | Forma | Exemplo | Observação |
 |---|---|---|
@@ -243,75 +284,120 @@ O lojista pode entrar com qualquer uma das três formas:
 | **E-mail** | `loja@email.com` | Opcional no cadastro; só disponível se informado |
 | **Código da loja** | `012312` | Gerado automaticamente no cadastro; fixo, sem expiração |
 
-**Senha:** PIN numérico de 6 dígitos (ex: `123456`). Simples e rápido de digitar no celular.
+**Entregador** — entra com:
 
-**Sessão:** 15 dias. O lojista pode salvar a sessão e não precisa fazer login a cada acesso.
+| Campo | Observação |
+|---|---|
+| **Username** | Único dentro da loja; credenciais separadas por loja (MVP) |
+| **PIN** | Numérico de 6 dígitos; definido pelo lojista no cadastro |
+
+**Senha:** PIN numérico de 6 dígitos para ambos os perfis.
+
+**Sessão:** 15 dias com opção "manter conectado". Papel persiste na sessão — não é perguntado novamente.
+
+---
+
+### Lojista — hierarquia de usuários
+
+Uma loja pode ter múltiplos usuários com dois níveis de permissão:
+
+| Nível | Quem é | Permissões |
+|---|---|---|
+| **Master** | Criado no wizard (dono da loja) | Acesso total; único que pode deletar outros usuários |
+| **Admin** | Cadastrado pelo master | Todas as funções do master, **exceto** deletar o master |
+
+- O master não pode ser deletado por um admin.
+- Admins podem cadastrar e remover entregadores, gerenciar expedições, rotas e pontos.
+- Futuro: diferenciação mais granular de permissões por função.
 
 ---
 
 ### Lojista — wizard de primeiro acesso
 
-Fluxo executado **uma única vez** no primeiro acesso. 3 passos. Objetivo: deixar a loja pronta para operar.
+Fluxo executado **uma única vez** no primeiro acesso. 3 passos. O usuário criado no wizard é automaticamente o **master** da loja.
 
 | Passo | O que acontece |
 |---|---|
 | **1 — Dados da loja** | Nome da loja + e-mail + senha (PIN de 6 dígitos). Sistema gera o código da loja automaticamente. |
 | **2 — Localização da loja** | Botão **"Usar minha localização agora"** — lê o GPS do celular, exibe o pin no mapa para o lojista confirmar. Fallback: busca por endereço. Feito uma única vez. |
-| **3 — Primeiro entregador** | Cadastro de nome + login + senha do entregador. Obrigatório antes de concluir. |
+| **3 — Primeiro entregador** | Cadastro de nome + login + senha temporária do entregador. Obrigatório antes de concluir. |
 | **Conclusão** | Sistema exibe o **código de 6 dígitos** gerado — lojista anota/salva. Entra no painel. |
 
 > Os setores do polo vêm **pré-mapeados** no sistema. Novos pontos podem ser adicionados pelo lojista nas configurações após o cadastro.
 
 ---
 
-### Entregador — login
+### Entregador — cadastro, login e segurança
 
-Cadastrado pelo lojista (no wizard ou depois, no painel).
+Cadastrado pelo lojista (master ou admin) no wizard ou depois no painel.
 
 | Campo | Obrigatório | Observação |
 |---|---|---|
 | **Nome** | Sim | Nome para exibição no painel do lojista |
-| **Login** | Sim | Username simples, único dentro da loja |
-| **PIN** | Sim | Numérico de 6 dígitos |
+| **Username** | Sim | Único dentro da loja |
+| **PIN temporário** | Sim | Definido pelo lojista; deve ser trocado no primeiro acesso |
 | **E-mail** | Não | Não solicitado |
 
-**Sessão:** mesma política do lojista — 15 dias, com opção de salvar.
+**Primeiro acesso:** o sistema obriga o entregador a trocar o PIN antes de qualquer outra ação. Após a troca, nem o lojista tem acesso à senha do entregador.
 
-O entregador acessa apenas o app mobile com o plano atribuído a ele. Não acessa o painel de gestão do lojista.
+**Recuperação de acesso:** o entregador solicita ao lojista, que gera um novo PIN temporário. O entregador deve trocá-lo no próximo acesso.
+
+**Multi-loja (MVP):** um entregador pode trabalhar para mais de uma loja, mas com credenciais independentes em cada uma — cadastrado separadamente em cada loja com username e PIN distintos.
+
+**Sessão:** mesma política do lojista — 15 dias com opção "manter conectado".
+
+O entregador acessa apenas o app com o plano atribuído a ele. Não acessa o painel de gestão do lojista.
+
+---
+
+### Recuperação de acesso
+
+| Perfil | Como recupera |
+|---|---|
+| **Lojista (master/admin)** | Link de redefinição enviado por e-mail |
+| **Entregador** | Lojista gera PIN temporário; entregador troca no próximo acesso |
 
 ---
 
 ### O que pertence a este módulo
 
+- Tela de login única com detecção automática de papel (lojista ou entregador)
 - Cadastro e login do lojista (username / e-mail / código + PIN)
 - Geração automática do código de 6 dígitos da loja
-- Wizard de primeiro acesso (localização da loja + pontos adicionais + primeiro entregador)
-- Cadastro e login do entregador (login + PIN, sem e-mail)
+- Wizard de primeiro acesso — cria o usuário master da loja
+- Hierarquia de usuários da loja: master e admin
+- Cadastro e login do entregador (username + PIN, sem e-mail, credenciais por loja)
+- Troca obrigatória de PIN no primeiro acesso do entregador
+- Recuperação de acesso: e-mail para lojista; reset pelo lojista para entregador
 - Gestão de sessão de 15 dias com opção "manter conectado"
-- Separação de permissões: lojista acessa painel completo da sua loja; entregador acessa apenas seu plano ativo
 
 ### Atores
 
 | Ator | Interação |
 |---|---|
-| **Lojista** | Cadastra a loja, passa pelo wizard, faz login pelas três formas |
-| **Entregador** | Faz login com username + PIN no app mobile |
+| **Lojista master** | Cadastra a loja, passa pelo wizard, gerencia usuários e entregadores |
+| **Lojista admin** | Mesmas funções do master, exceto deletar o master |
+| **Entregador** | Faz login com username + PIN; troca senha no primeiro acesso |
 
 ### Dependências
 
 | Módulo | Motivo |
 |---|---|
-| M5 — Polo e Pontos | Passo 5 do wizard cadastra novos pontos diretamente em M5 |
+| M5 — Polo e Pontos | Passo 3 do wizard cadastra novos pontos diretamente em M5 |
 
 Os demais módulos recebem o `UsuárioAutenticado` já resolvido — não dependem de M6 diretamente.
 
 ### Regras críticas
 
+- O sistema detecta o papel do usuário pelas credenciais — não há seleção manual de papel na tela de login.
 - Um entregador só acessa os dados da loja que o cadastrou.
 - O lojista só acessa as expedições e dados da sua própria loja.
+- O master não pode ser deletado por um admin.
+- O entregador é obrigado a trocar o PIN no primeiro acesso — o fluxo do app é bloqueado até a troca ser feita.
 - O código de 6 dígitos da loja não expira e não muda (a menos que o lojista solicite regeneração futuramente).
 - O wizard de primeiro acesso (3 passos) deve ser concluído antes de o lojista acessar o painel — nenhum passo pode ser pulado.
 - A localização da loja é definida uma única vez no wizard; pode ser editada nas configurações depois.
+- Credenciais do entregador são por loja no MVP — conta unificada multi-loja é evolução futura.
 
 ---
 
@@ -388,8 +474,8 @@ Nenhum ciclo de dependência. M5 é o módulo base; M6 é transversal (autentica
 
 | Módulo | MVP | Futuro |
 |---|---|---|
-| **M1 — Expedição** | Criação manual; estados completos; painel de acompanhamento | Criação por voz (wizard IA); criação por foto/OCR; integração com soft do lojista |
-| **M2 — Roteirização** | Geração determinística por urgência + setor + vaga; atribuição manual do entregador; repriorização manual | Repriorização automática por IA; atribuição automática por carga/disponibilidade; marketplace de entregadores avulsos |
+| **M1 — Expedição** | Criação manual com autocomplete (cliente, cidade, excursão); estados completos; painel de acompanhamento | Criação por voz (wizard IA — usa o mesmo índice do autocomplete); criação por foto/OCR; integração com soft do lojista |
+| **M2 — Roteirização** | Geração determinística por urgência + setor + vaga; atribuição manual do entregador; repriorização manual | IA para sugestão de prioridades entre entregas; repriorização automática; atribuição automática por carga/disponibilidade; marketplace de entregadores avulsos |
 | **M3 — Comprovante** | Foto mercadoria + foto assinatura + GPS; ocorrência com motivo; listagem de devoluções | — |
 | **M4 — Compradores** | Cadastro; busca com desambiguação; ponto habitual | Histórico analítico por comprador |
 | **M5 — Polo e Pontos** | Setores e pontos de Santa Cruz do Capibaribe; horários de partida; correção em campo | Expansão para outros polos; mapa 3D gamificado com countdown de prazo |

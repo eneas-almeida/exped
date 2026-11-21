@@ -318,7 +318,7 @@ Fluxo executado **uma única vez** no primeiro acesso. 3 passos. O usuário cria
 
 | Passo | O que acontece |
 |---|---|
-| **1 — Dados da loja** | Nome da loja + e-mail + senha (PIN de 6 dígitos). Sistema gera o código da loja automaticamente. |
+| **1 — Dados da loja** | Nome da loja + username + e-mail + senha (PIN de 6 dígitos). Sistema verifica disponibilidade do username em tempo real durante a digitação. Sistema gera o código da loja automaticamente. |
 | **2 — Localização da loja** | Botão **"Usar minha localização agora"** — lê o GPS do celular, exibe o pin no mapa para o lojista confirmar. Fallback: busca por endereço. Feito uma única vez. |
 | **3 — Primeiro entregador** | Cadastro de nome + login + senha temporária do entregador. Obrigatório antes de concluir. |
 | **Conclusão** | Sistema exibe o **código de 6 dígitos** gerado — lojista anota/salva. Entra no painel. |
@@ -390,6 +390,7 @@ Os demais módulos recebem o `UsuárioAutenticado` já resolvido — não depend
 ### Regras críticas
 
 - O sistema detecta o papel do usuário pelas credenciais — não há seleção manual de papel na tela de login.
+- O username do lojista é globalmente único no sistema — verificação de disponibilidade em tempo real durante o cadastro (feedback imediato: disponível / já em uso).
 - Um entregador só acessa os dados da loja que o cadastrou.
 - O lojista só acessa as expedições e dados da sua própria loja.
 - O master não pode ser deletado por um admin.

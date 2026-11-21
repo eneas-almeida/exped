@@ -365,6 +365,8 @@ Experiência visual que transforma a operação de entregas em algo visivelmente
 
 | Decisão | MVP | Futuro |
 |---|---|---|
+| **Domínio** | `exped.app` | — |
+| **Modelo de acesso** | Multi-tenant — múltiplas lojas no mesmo sistema; dados de cada loja completamente isolados | — |
 | **Escopo geográfico** | Santa Cruz do Capibaribe – PE | Expansão para outros polos/regiões |
 | **Usuários de teste** | 2 lojistas — com estratégia diferenciada (ver abaixo) | — |
 | **Foco absoluto** | Reduzir tempo de cadastro de expedições | — |

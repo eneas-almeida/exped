@@ -315,6 +315,23 @@ export interface StoragePort {
 
 ## 7. Decisões de Infraestrutura
 
+### Domínio
+
+**Decisão:** `exped.app`
+
+O produto é acessado via `exped.app` (painel web do lojista e PWA do entregador no mesmo domínio). Subdomínios ou rotas específicas por perfil a definir na etapa de design.
+
+### Multi-tenancy
+
+**Decisão:** sistema multi-tenant — cada loja é um tenant isolado.
+
+| Critério | Decisão |
+|---|---|
+| **Isolamento de dados** | Lojistas só acessam dados da própria loja; entregadores só acessam dados da loja que os cadastrou |
+| **Estratégia** | Row-level security (RLS) via Supabase — cada query é filtrada por `lojistaId` automaticamente |
+| **Escopo MVP** | Múltiplas lojas ativas no mesmo banco, sem particionamento físico |
+| **Futuro** | Schema-per-tenant ou database-per-tenant se volume crescer |
+
 ### Banco de Dados
 
 **Decisão:** PostgreSQL via Supabase.
@@ -476,6 +493,8 @@ Entregador → "Entregar" → [App PWA]
 
 ### MVP (2 lojistas, volume baixo)
 
+**Domínio:** `exped.app`
+
 ```
 GitHub
   └── GitHub Actions (CI)
@@ -483,7 +502,7 @@ GitHub
         ├── testes de integração (Adapters contra Supabase test instance)
         └── deploy automático em merge para main
               ├── Backend (API) → Vercel Serverless Functions ou Railway
-              └── Frontend → Vercel (CDN global)
+              └── Frontend → Vercel (CDN global) → exped.app
 
 Supabase (hosted):
   ├── PostgreSQL

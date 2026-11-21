@@ -48,7 +48,8 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 ## Fluxo de alterações
 
 - Ao concluir qualquer alteração em arquivos do projeto, o Claude deve **perguntar se o usuário deseja fazer commit e push** antes de encerrar a resposta.
-- Nunca commitar ou fazer push automaticamente sem a confirmação explícita do usuário.
+- **NUNCA commitar ou fazer push automaticamente sem a confirmação explícita do usuário.** Esta regra não tem exceções — nem quando a alteração parece óbvia, nem ao final de uma sessão de trabalho, nem após criar ou editar documentos.
+- Esta regra se aplica a qualquer operação git que modifique o histórico: `git commit`, `git push`, `git merge`, `git rebase`, `git tag`.
 
 ---
 

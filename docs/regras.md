@@ -32,6 +32,7 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 
 - Antes de iniciar qualquer tópico novo — produto, requisitos, arquitetura, UX, domínio — **sempre busque uma skill relevante** com `/find-skills <tópico>`.
 - Se uma skill adequada for encontrada, instale-a globalmente com `npx skills add <pacote> -g -y` e registre-a em `docs/skills.md` antes de usá-la.
+- **Sempre que uma nova skill for instalada ou descoberta, adicione imediatamente uma entrada em `docs/skills.md`** com: nome, pacote, como invocar e quando usar. Sem exceções — skill instalada sem registro em `docs/skills.md` está incompleta.
 - Nunca resolva um tópico especializado sem verificar se existe uma skill disponível que cubra o assunto.
 
 ---

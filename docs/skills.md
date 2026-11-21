@@ -52,16 +52,6 @@ Diagnostica problemas de requisitos e guia a descoberta das reais necessidades e
 
 ---
 
-## Arquitetura de Software
-
-### `domain-driven-design`
-**Pacote:** `wondelai/skills@domain-driven-design` · 7.8K installs  
-**Como invocar:** `/domain-driven-design`
-
-Modela o software em torno do domínio de negócio usando Bounded Contexts, Aggregates, linguagem ubíqua e Context Mapping. Especialmente valioso para a Exped, que tem um domínio rico (pedido, entrega, rota, motorista, rastreamento, notificação). Use para definir os limites dos serviços antes de escrever qualquer código.
-
----
-
 ### `software-architecture`
 **Pacote:** `sickn33/agentic-awesome-skills@software-architecture` · 3.7K installs  
 **Como invocar:** `/software-architecture`
@@ -97,6 +87,16 @@ Mapeia a experiência completa de uma persona: etapas, pontos de contato, emoç�
 
 ---
 
+## Arquitetura
+
+### `clean-architecture`
+**Pacote:** `clean-architecture` (instalada globalmente)  
+**Como invocar:** `/clean-architecture`
+
+Estrutura o software em torno da Dependency Rule: dependências de código apontam para dentro, do framework → casos de uso → entidades. Cobre ports & adapters (hexagonal), onion architecture, separação de camadas e princípios SOLID. Use ao decidir onde a lógica de negócio vive, como isolar o domínio da infraestrutura e como estruturar os módulos sem acoplar ao framework.
+
+---
+
 ## Domínio de Logística
 
 ### `last-mile-delivery`
@@ -129,6 +129,7 @@ Etapa 4 — Fluxos e jornadas
 Etapa 5 — Arquitetura
   9. /domain-driven-design   → Modelagem do domínio e bounded contexts
  10. /software-architecture  → Decisões e diagramas de arquitetura técnica
+ 11. /clean-architecture     → Estrutura em camadas e separação de responsabilidades
 
 Validação contínua
  11. /last-mile-delivery     → Validação com conhecimento do domínio logístico

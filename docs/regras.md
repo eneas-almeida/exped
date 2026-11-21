@@ -6,8 +6,18 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 
 ## Idioma
 
-- Todo o conteúdo do projeto — código, comentários, documentação, commits, PRs e conversas — deve ser em **português**.
+- Todo o conteúdo do projeto — comentários, documentação, commits, PRs e conversas — deve ser em **português**.
 - Exceções: nomes de bibliotecas, termos técnicos sem tradução consagrada (e.g. `deploy`, `branch`, `commit`) e identificadores de código (variáveis, funções, classes) podem permanecer em inglês quando for a convenção da tecnologia adotada.
+
+---
+
+## Nomenclatura de arquivos e diretórios
+
+- **Nomes de arquivos e diretórios devem ser sempre em inglês**, sem exceções.
+- Usar **kebab-case**: todas as letras minúsculas, palavras separadas por hífen (e.g. `delivery-plan.ts`, `create-expedition/`).
+- Nunca usar espaços, underscores, letras maiúsculas ou caracteres especiais em nomes de arquivos.
+- Exemplos corretos: `expedition.repository.ts`, `generate-delivery-plan/`, `gps-coordinates.ts`
+- Exemplos incorretos: `Expedicao.ts`, `criarExpedicao.ts`, `plano_de_entrega.ts`, `expedição.ts`
 
 ---
 

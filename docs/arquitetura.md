@@ -86,12 +86,16 @@ Código de colagem (glue code) com o mundo externo. O framework chama para dentr
 
 | Componente | Papel |
 |---|---|
-| **Web Framework** | Roteamento HTTP; chama Controllers |
-| **ORM / Driver SQL** | Implementa os Repositories; confinado nesta camada |
+| **Express** | Roteamento HTTP; chama Controllers |
+| **Prisma (SQL)** | ORM para PostgreSQL; confinado nesta camada |
+| **Mongoose (NoSQL)** | Driver MongoDB para eventos e tracking; confinado nesta camada |
 | **Google Maps SDK** | Consumido exclusivamente pelo Maps Gateway |
-| **Supabase / PostgreSQL** | Banco de dados; invisível para Use Cases |
-| **Supabase Auth** | Autenticação; resultado chega aos Controllers como `UsuárioAutenticado` |
-| **Cloudflare R2 / S3** | Armazenamento de fotos de comprovante |
+| **PostgreSQL** | Banco relacional; invisível para Use Cases |
+| **MongoDB** | Banco de documentos para eventos e tracking; invisível para Use Cases |
+| **JWT + bcrypt** | Autenticação; resultado chega aos Controllers como `UsuárioAutenticado` |
+| **AWS ElastiCache (Redis)** | Cache de tokens, blacklist de refresh tokens, rate limiting |
+| **AWS S3** | Armazenamento de fotos de comprovante e uploads futuros |
+| **Datadog** | Logs, APM e alertas de infraestrutura |
 | **Twilio / Meta API** | Envio de WhatsApp/SMS `[Futuro]` |
 
 ---
@@ -102,7 +106,7 @@ Código de colagem (glue code) com o mundo externo. O framework chama para dentr
 ┌──────────────────────────────────────────────────────────────────────┐
 │  FRAMEWORKS & DRIVERS (camada 4)                                     │
 │                                                                      │
-│  Express/Fastify  PostgreSQL  Google Maps SDK  Supabase  R2/S3       │
+│  Express  PostgreSQL  MongoDB  Google Maps SDK  AWS S3  ElastiCache  │
 │        │               │            │              │        │        │
 └────────┼───────────────┼────────────┼──────────────┼────────┼────────┘
          ▼               ▼            ▼              ▼        ▼
@@ -204,64 +208,68 @@ Código de colagem (glue code) com o mundo externo. O framework chama para dentr
 src/
 │
 ├── entities/                      # Camada 1 — zero dependências externas
-│   ├── expedição.ts
-│   ├── entrega.ts
-│   ├── ponto.ts
-│   ├── plano-de-entrega.ts
-│   ├── comprovante.ts
-│   ├── comprador.ts
+│   ├── expedition.ts
+│   ├── delivery.ts
+│   ├── stop.ts
+│   ├── delivery-plan.ts
+│   ├── delivery-proof.ts
+│   ├── buyer.ts
 │   └── value-objects/
-│       ├── localizacao-ponto.ts
-│       ├── prazo-de-entrega.ts
-│       ├── nivel-urgencia.ts
-│       ├── coordenadas-gps.ts
+│       ├── stop-location.ts
+│       ├── delivery-deadline.ts
+│       ├── urgency-level.ts
+│       ├── gps-coordinates.ts
 │       └── volume.ts
 │
 ├── use-cases/                     # Camada 2 — depende só de Entities
-│   ├── criar-expedicao/
-│   │   ├── criar-expedicao.interactor.ts
-│   │   ├── criar-expedicao.request.ts
-│   │   └── criar-expedicao.response.ts
-│   ├── gerar-plano-de-entrega/
-│   ├── registrar-comprovante/
-│   ├── registrar-ocorrencia/
-│   ├── repriorize-entrega/
+│   ├── create-expedition/
+│   │   ├── create-expedition.interactor.ts
+│   │   ├── create-expedition.request.ts
+│   │   └── create-expedition.response.ts
+│   ├── generate-delivery-plan/
+│   ├── register-proof/
+│   ├── register-occurrence/
+│   ├── reprioritize-delivery/
 │   └── ... (um diretório por use case)
 │
 ├── ports/                         # Interfaces definidas pelos Use Cases
-│   ├── expedicao.repository.ts    # interface — implementada nos adapters
-│   ├── ponto.repository.ts
-│   ├── comprador.repository.ts
-│   ├── comprovante.repository.ts
-│   ├── plano.repository.ts
+│   ├── expedition.repository.ts   # interface — implementada nos adapters
+│   ├── stop.repository.ts
+│   ├── buyer.repository.ts
+│   ├── delivery-proof.repository.ts
+│   ├── delivery-plan.repository.ts
 │   ├── maps.port.ts               # interface do Maps Gateway (ACL)
 │   ├── storage.port.ts            # interface do Storage (fotos)
-│   └── notificacao.port.ts        # interface de notificação [Futuro]
+│   └── notification.port.ts       # interface de notificação [Futuro]
 │
 ├── adapters/                      # Camada 3 — converte entre camadas
 │   ├── controllers/
-│   │   ├── expedicao.controller.ts
-│   │   ├── plano.controller.ts
-│   │   └── comprovante.controller.ts
+│   │   ├── expedition.controller.ts
+│   │   ├── delivery-plan.controller.ts
+│   │   └── proof.controller.ts
 │   ├── presenters/
-│   │   ├── expedicao.presenter.ts
-│   │   └── plano.presenter.ts
+│   │   ├── expedition.presenter.ts
+│   │   └── delivery-plan.presenter.ts
 │   └── gateways/
-│       ├── postgres-expedicao.repository.ts
-│       ├── postgres-ponto.repository.ts
-│       ├── postgres-comprador.repository.ts
+│       ├── postgres-expedition.repository.ts
+│       ├── postgres-stop.repository.ts
+│       ├── postgres-buyer.repository.ts
 │       ├── google-maps.gateway.ts    # ACL — Google Maps
-│       ├── r2-storage.gateway.ts     # ACL — Cloudflare R2
+│       ├── s3-storage.gateway.ts     # ACL — AWS S3
 │       └── whatsapp.gateway.ts       # ACL — Meta API [Futuro]
 │
 ├── frameworks/                    # Camada 4 — glue code
 │   ├── http/
-│   │   └── server.ts              # Express/Hono — só roteia para controllers
+│   │   └── server.ts              # Express — só roteia para controllers
 │   ├── database/
-│   │   ├── schema.ts              # Drizzle/Prisma schema
-│   │   └── migrations/
+│   │   ├── prisma/
+│   │   │   ├── schema.prisma      # Schema PostgreSQL
+│   │   │   └── migrations/
+│   │   └── mongo-client.ts        # Mongoose — eventos e tracking
+│   ├── cache/
+│   │   └── redis-client.ts        # AWS ElastiCache (ioredis)
 │   └── auth/
-│       └── supabase-auth.ts
+│       └── jwt-auth.ts            # JWT + bcrypt
 │
 └── main.ts                        # Composition root — conecta tudo
 ```
@@ -328,38 +336,96 @@ O produto é acessado via `exped.app` (painel web do lojista e PWA do entregador
 | Critério | Decisão |
 |---|---|
 | **Isolamento de dados** | Lojistas só acessam dados da própria loja; entregadores só acessam dados da loja que os cadastrou |
-| **Estratégia** | Row-level security (RLS) via Supabase — cada query é filtrada por `lojistaId` automaticamente |
+| **Estratégia** | Coluna `lojistaId` em todas as tabelas; middleware de autenticação injeta o `lojistaId` em cada query |
 | **Escopo MVP** | Múltiplas lojas ativas no mesmo banco, sem particionamento físico |
 | **Futuro** | Schema-per-tenant ou database-per-tenant se volume crescer |
 
+### Hosting
+
+**Decisão:** DigitalOcean Droplet (VPS único, Docker Compose).
+
+| Critério | Decisão |
+|---|---|
+| **Servidor** | DigitalOcean Droplet — Ubuntu 24.04, 4 GB RAM, 2 vCPU (início) |
+| **Containerização** | Docker + Docker Compose — backend, PostgreSQL, MongoDB, Nginx |
+| **Reverse proxy** | Nginx — TLS via Let's Encrypt, roteamento `/api` → backend, `/` → frontend |
+| **Orquestração** | Docker Compose — sem Kubernetes, Helm, Istio ou Argo no MVP |
+| **Futuro** | Kubernetes + Helm quando escala horizontal for necessária |
+
 ### Banco de Dados
 
-**Decisão:** PostgreSQL via Supabase.
+**Decisão:** PostgreSQL (dados relacionais) + MongoDB (eventos e tracking).
 
-| Critério | Justificativa |
+| Banco | Uso | Justificativa |
+|---|---|---|
+| **PostgreSQL 16** | Entidades do domínio (Expedição, Entrega, Ponto, Comprovante, Comprador) | Relações claras, transações ACID, integridade referencial |
+| **MongoDB 7** | Eventos de tracking GPS, log de ocorrências, histórico operacional | Schema flexível para dados semi-estruturados; writes de alta frequência (GPS) |
+
+Ambos rodam no mesmo Droplet via Docker Compose no MVP; migrar para serviços gerenciados (DO Managed Databases / MongoDB Atlas) quando volume justificar.
+
+### Autenticação e Cache
+
+**Decisão:** JWT + bcrypt para autenticação; AWS ElastiCache (Redis) para cache de tokens.
+
+| Componente | Implementação |
 |---|---|
-| Relacional | Domínio tem relações claras (Expedição → Entrega → Ponto → Setor) |
-| Supabase | Auth integrado, storage, realtime subscriptions — reduz infraestrutura para MVP |
-| Realtime | `supabase.channel()` para atualizar status de entrega no painel sem polling |
+| **Senha** | `bcrypt` (cost 12) |
+| **Access token** | JWT assinado (1 hora de validade) |
+| **Refresh token** | JWT de longa duração (7 dias); armazenado no ElastiCache para revogação imediata |
+| **Blacklist** | Tokens revogados guardados no Redis até expiração natural |
+| **Rate limiting** | Contadores por IP/usuário no Redis (`ioredis`) |
+| **Futuro** | Adicionar autenticação social (Google, Apple) via Clerk ou Auth0 se necessário |
 
-### Armazenamento de Fotos (Comprovante)
+### Armazenamento de Arquivos
 
-**Decisão:** Supabase Storage (S3-compatible) no MVP; migrar para Cloudflare R2 se custo crescer.
+**Decisão:** AWS S3 para fotos de comprovante e uploads futuros.
 
-Fotos de comprovante são dados críticos (segurança jurídica) — não podem ser perdidas.
+Fotos de comprovante são dados críticos (segurança jurídica) — não podem ser perdidas. AWS S3 é o padrão consolidado para storage de objetos; custo previsível e integração madura com Node.js.
+
+| Uso | Bucket | Configuração |
+|---|---|---|
+| Fotos de comprovante (mercadoria + assinatura) | `exped-comprovantes` | Privado; acesso via URL pré-assinada (15 min) |
+| Uploads futuros (perfis, documentos) | `exped-uploads` | Privado; acesso por API |
+
+### Observabilidade
+
+**Decisão:** Datadog (logs, APM, alertas).
+
+| Componente | Implementação |
+|---|---|
+| **Logs** | Winston + `datadog-winston` transport — logs estruturados em JSON |
+| **APM** | `dd-trace` (auto-instrumentação de Express, Prisma, Mongoose, Redis) |
+| **Métricas** | Datadog Agent como container no Compose — acessa `/var/run/docker.sock` para coletar CPU, memória, disco e métricas de todos os containers |
+| **Alertas** | Monitors no Datadog para erros 5xx, latência p95, espaço em disco e falha de backup |
 
 ### Mapas e Roteirização
 
 **Decisão:** Google Maps API no MVP.
 
 - `Directions API` para calcular rota entre loja e setor
-- Referência de vaga (ex: "Setor Laranja - Vaga 33") guia entregador no campo
 - **ACL obrigatória** — a resposta da Maps API nunca entra nos Use Cases diretamente
 - Avaliar OpenStreetMap + OSRM pós-MVP para reduzir custo em volume
 
-### Notificações
+### Backup Diário
 
-**Decisão:** Fora do MVP. Arquitetura já prevê o `NotificacaoPort` — quando implementado, não muda nenhuma linha de Use Case.
+**Decisão:** backup automático diário para AWS S3.
+
+| Banco | Estratégia | Ferramenta |
+|---|---|---|
+| **PostgreSQL** | Dump comprimido diário às 03h00 (UTC) | `pg_dump` via cron no Droplet |
+| **MongoDB** | Dump comprimido diário às 03h15 (UTC) | `mongodump` via cron no Droplet |
+| **Retenção** | 30 dias de backups diários | S3 Lifecycle Policy no bucket `exped-backups` |
+| **Restauração** | Script documentado em `scripts/restore.sh`; testado mensalmente | `pg_restore` / `mongorestore` |
+
+Script de backup: `scripts/backup.sh` — executado via cron, envia evento de sucesso/falha para Datadog.
+
+### Realtime
+
+**Decisão:** Socket.io para o painel do lojista.
+
+- Lojista vê status das entregas atualizando sem refresh
+- Entregador envia comprovante → painel atualiza em segundos
+- Socket.io roda no mesmo processo Express no MVP
 
 ### Conectividade (PWA offline)
 
@@ -371,43 +437,46 @@ Fotos de comprovante são dados críticos (segurança jurídica) — não podem 
 | Registrar comprovante | Queue local no Service Worker; sync quando online |
 | Atualizar status de entrega | Online-required; alerta visual quando offline |
 
-### Realtime
+### Notificações
 
-**Decisão:** Supabase Realtime (WebSocket) para o painel do lojista.
-
-- Lojista vê status das entregas atualizando sem refresh
-- Entregador envia comprovante → painel atualiza em segundos
-- Sem necessidade de polling ou websocket manual no MVP
+**Decisão:** Fora do MVP. Arquitetura já prevê o `NotificacaoPort` — quando implementado, não muda nenhuma linha de Use Case.
 
 ---
 
-## 8. Stack Tecnológico Proposto
+## 8. Stack Tecnológico
 
 ### Backend
 
-| Componente | Escolha MVP | Alternativa |
+| Componente | Escolha | Notas |
 |---|---|---|
-| Linguagem | TypeScript (Node.js) | Python + FastAPI |
-| Framework HTTP | Hono (edge-ready, leve) | Fastify |
-| ORM | Drizzle ORM (type-safe, sem magic) | Prisma |
-| Banco | PostgreSQL via Supabase | PostgreSQL standalone |
-| Auth | Supabase Auth | Clerk |
-| Storage | Supabase Storage | Cloudflare R2 |
-| Deploy | Vercel (serverless) ou Railway | Fly.io |
+| Linguagem | TypeScript (Node.js 22 LTS) | — |
+| Framework HTTP | **Express puro** | Leve, sem magia, encaixa perfeitamente no Clean Arch |
+| ORM (SQL) | **Prisma** | Type-safe, migrations automáticas, schema declarativo |
+| Driver NoSQL | **Mongoose** | ODM para MongoDB (eventos e tracking) |
+| Banco relacional | PostgreSQL 16 | Dados do domínio; Docker no Droplet |
+| Banco de documentos | MongoDB 7 | Eventos GPS, logs operacionais; Docker no Droplet |
+| Cache | **AWS ElastiCache (Redis)** | Tokens JWT, blacklist, rate limiting (`ioredis`) |
+| Autenticação | JWT + bcrypt | `jsonwebtoken` + `bcrypt`; sem dependência externa |
+| Storage | **AWS S3** | Fotos de comprovante e uploads futuros |
+| Observabilidade | **Datadog** | `dd-trace` + `datadog-winston` |
+| Realtime | **Socket.io** | Painel do lojista; mesmo processo Express |
+| Validação | **Zod** | Schema validation nos Controllers (Interface Adapters) |
 
 ### Frontend Web (Painel do Lojista)
 
-| Componente | Escolha MVP | Alternativa |
+| Componente | Escolha | Notas |
 |---|---|---|
-| Framework | React + Vite | Next.js |
-| State | Zustand + React Query | Jotai |
-| Mapa | Google Maps JS API | Leaflet + OSM |
-| Realtime | Supabase Realtime client | Socket.io |
-| UI | shadcn/ui (Tailwind) | Mantine |
+| Framework | **React 19 + Vite** | SPA; sem SSR necessário para painel autenticado |
+| State | Zustand + TanStack Query | Estado global + server state com cache |
+| UI | **shadcn/ui + Tailwind CSS** | Componentes copy-paste; total controle sobre o código |
+| Mapa | Google Maps JS API | Visualização de rota e pontos de entrega |
+| Realtime | Socket.io-client | Recebe updates de status do backend |
+| Formulários | React Hook Form + Zod | Performance e validação declarativa |
+| PWA | vite-plugin-pwa | Service Worker e manifest para o app do entregador |
 
 ### App Mobile (Entregador — PWA)
 
-| Componente | Escolha MVP | Futuro |
+| Componente | Escolha | Futuro |
 |---|---|---|
 | Abordagem | PWA (mesmo codebase do web) | React Native |
 | Câmera | Web API (`getUserMedia`) | Expo Camera |
@@ -417,14 +486,24 @@ Fotos de comprovante são dados críticos (segurança jurídica) — não podem 
 
 ### IA (Sugestão de Plano de Entrega)
 
-**Decisão:** Lógica determinística no MVP; Claude API (Anthropic) para wizard de voz no Lojista 2.
-
 | Funcionalidade | Implementação |
 |---|---|
 | Ordenação do plano (prazo + setor + vaga) | Algoritmo determinístico — Entities layer |
 | Desambiguação de comprador por nome | Busca fuzzy no `CompradorRepository` |
 | Wizard de IA por voz `[Lojista 2]` | Claude API (streaming) |
 | Futuro: repriorização automática | Claude API com contexto operacional |
+
+### Infraestrutura e DevOps
+
+| Componente | Escolha | Notas |
+|---|---|---|
+| Servidor | DigitalOcean Droplet | Ubuntu 24.04, 4 GB RAM, 2 vCPU (início) |
+| Containerização | Docker + Docker Compose | Backend, PostgreSQL, MongoDB, Nginx |
+| Reverse proxy | Nginx | TLS (Let's Encrypt), roteamento `/api` e `/` |
+| CI/CD | **GitHub Actions** | Build → Test → Deploy via SSH |
+| Cache / sessão | **AWS ElastiCache** | Redis gerenciado pela AWS |
+| Storage | **AWS S3** | Fotos e uploads; backup diário |
+| Observabilidade | **Datadog** | Logs, APM, métricas do Droplet, alertas |
 
 ---
 
@@ -497,34 +576,78 @@ Entregador → "Entregar" → [App PWA]
 
 ```
 GitHub
-  └── GitHub Actions (CI)
+  └── GitHub Actions (CI/CD)
+        ├── lint + type-check (TypeScript)
         ├── testes unitários (Entities + Use Cases — sem infra)
-        ├── testes de integração (Adapters contra Supabase test instance)
-        └── deploy automático em merge para main
-              ├── Backend (API) → Vercel Serverless Functions ou Railway
-              └── Frontend → Vercel (CDN global) → exped.app
+        ├── testes de integração (Adapters contra banco de teste local)
+        └── deploy em merge para main
+              └── SSH → DigitalOcean Droplet
+                    └── docker compose pull && docker compose up -d
 
-Supabase (hosted):
-  ├── PostgreSQL
-  ├── Auth
-  └── Storage
+DigitalOcean Droplet — Docker Compose:
+  ├── Nginx          (container — reverse proxy + TLS Let's Encrypt)
+  ├── Express API    (container — node dist/main.js)
+  ├── PostgreSQL 16  (container)
+  ├── MongoDB 7      (container)
+  └── Datadog Agent  (container — coleta logs/métricas via docker.sock; recebe traces do dd-trace na porta 8126)
+
+AWS (serviços gerenciados):
+  ├── ElastiCache (Redis) — cache de tokens e rate limiting
+  └── S3 — fotos de comprovante + backups diários
 ```
 
-### Vantagens desta escolha para MVP:
-- **Zero gestão de servidor** — foco no produto, não em operações
-- **Custo próximo de zero** no nível de 2 lojistas (Supabase free, Vercel free)
-- **Realtime incluso** no Supabase sem infra adicional
-- **Escala automaticamente** quando o produto crescer
+### Pipeline GitHub Actions
+
+```yaml
+# .github/workflows/deploy.yml
+jobs:
+  test:
+    steps:
+      - npm ci
+      - npm run lint
+      - npm run type-check
+      - npm run test:unit
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - Build imagem Docker → push GitHub Container Registry (ghcr.io)
+      - SSH no Droplet → docker compose pull → docker compose up -d
+      - Health check na API → evento de deploy no Datadog
+```
+
+### Sem orquestração complexa no MVP
+
+| Ferramenta | Decisão | Futuro |
+|---|---|---|
+| Kubernetes | Não | Quando precisar de múltiplos pods ou zero-downtime rolling deploys |
+| Helm | Não | Junto com K8s |
+| Istio / service mesh | Não | Se múltiplos microserviços |
+| Argo CD | Não | GitOps quando K8s entrar |
+
+### Backup automático diário
+
+```bash
+# crontab no Droplet
+# PostgreSQL — 03h00 UTC
+0 3 * * * /opt/exped/scripts/backup-postgres.sh
+
+# MongoDB — 03h15 UTC
+15 3 * * * /opt/exped/scripts/backup-mongo.sh
+```
+
+Backups comprimidos enviados para `s3://exped-backups/YYYY-MM-DD/`. Retenção: 30 dias (S3 Lifecycle Policy). Alerta automático no Datadog em caso de falha.
 
 ### Futuro (pós-validação)
 
 | Componente | Evolução |
 |---|---|
-| Backend | Containerizar com Docker → migrar para Fly.io ou ECS |
-| Banco | Manter Supabase ou migrar para RDS + réplicas de leitura |
+| Banco | DO Managed Databases ou RDS (réplicas de leitura, failover automático) |
 | App mobile | Compilar React Native a partir do mesmo codebase lógico |
 | Maps | Avaliar OpenStreetMap para reduzir custo de APIs em volume |
-| Realtime | Adicionar Redis Pub/Sub se volume de conexões crescer |
+| Filas | BullMQ + Redis para processamento assíncrono (notificações, relatórios) |
+| K8s | Migrar quando escala horizontal ou múltiplos serviços forem necessários |
 
 ---
 

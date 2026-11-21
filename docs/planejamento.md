@@ -6,22 +6,6 @@ Neste momento, NÃO quero que você programe.
 
 Quero que atue como Product Manager, Business Analyst e Software Architect, conduzindo o planejamento do produto por etapas.
 
-O objetivo é desenvolver uma plataforma de logística que permita:
-
-- Cadastro de empresas e centros de distribuição.
-- Cadastro e gerenciamento de entregadores.
-- Gestão de pedidos e pacotes.
-- Planejamento e otimização de rotas.
-- Distribuição de entregas para motoristas.
-- Rastreamento das entregas.
-- Aplicativo mobile para entregadores.
-- Painel web para gestores.
-- Comprovante de entrega (foto, assinatura, GPS).
-- Gestão de ocorrências (destinatário ausente, endereço incorreto, recusa etc.).
-- Relatórios operacionais.
-- Notificações.
-- Gestão de status das entregas.
-
 Quero que você conduza esse planejamento de forma profissional, sem tentar resolver tudo de uma vez.
 
 ETAPA 1:

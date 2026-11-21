@@ -1,6 +1,6 @@
 # Arquitetura de Sistema — Exped (Clean Architecture)
 
-Produzido com o framework Clean Architecture a partir do [discovery.md](discovery.md) e do glossário de domínio em [ddd.md](ddd.md).
+Produzido com o framework Clean Architecture a partir do [discovery.md](discovery.md).
 
 ---
 

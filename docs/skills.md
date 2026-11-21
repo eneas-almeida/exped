@@ -52,16 +52,6 @@ Diagnostica problemas de requisitos e guia a descoberta das reais necessidades e
 
 ---
 
-## Arquitetura de Software
-
-### `domain-driven-design`
-**Pacote:** `wondelai/skills@domain-driven-design` · 7.8K installs  
-**Como invocar:** `/domain-driven-design`
-
-Modela o software em torno do domínio de negócio usando Bounded Contexts, Aggregates, linguagem ubíqua e Context Mapping. Especialmente valioso para a Exped, que tem um domínio rico (pedido, entrega, rota, motorista, rastreamento, notificação). Use para definir os limites dos serviços antes de escrever qualquer código.
-
----
-
 ### `software-architecture`
 **Pacote:** `sickn33/agentic-awesome-skills@software-architecture` · 3.7K installs  
 **Como invocar:** `/software-architecture`
@@ -82,8 +72,7 @@ Guia completo para design de aplicativos mobile: padrões de navegação, compon
 
 ### `ui-ux-designer`
 **Pacote:** `sickn33/agentic-awesome-skills@ui-ux-designer` · 3.2K installs  
-**Como invocar:** `/ui-ux-designer`  
-**Status:** instalar com `npx skills add sickn33/agentic-awesome-skills@ui-ux-designer -g -y`
+**Como invocar:** `/ui-ux-designer`
 
 Atua como designer UX/UI especializado: pesquisa de usuários, wireframes, protótipos, sistemas de design e heurísticas de usabilidade. Use para o painel web dos gestores e para revisar fluxos de tela do app.
 
@@ -94,6 +83,61 @@ Atua como designer UX/UI especializado: pesquisa de usuários, wireframes, prot�
 **Como invocar:** `/journey-map`
 
 Mapeia a experiência completa de uma persona: etapas, pontos de contato, emoções e pontos de dor. Use na Etapa 4 do planejamento para mapear as jornadas dos gestores, entregadores e destinatários.
+
+---
+
+## Frontend — React
+
+### `tailwind-v4-shadcn`
+**Pacote:** `secondsky/claude-skills@tailwind-v4-shadcn` · 8.3K installs  
+**Como invocar:** `/tailwind-v4-shadcn`
+
+Setup produtivo para Tailwind CSS v4 com shadcn/ui, Vite e React. Cobre o padrão `@theme inline`, arquitetura de CSS variables, dark mode com ThemeProvider, composição de componentes, configuração do `vite.config`, armadilhas comuns do v4 e migração do v3. Use ao inicializar o projeto frontend ou ao resolver problemas de tema e dark mode.
+
+---
+
+### `react-doctor`
+**Pacote:** `millionco/react-doctor@react-doctor` · 22.8K installs  
+**Como invocar:** `/react-doctor`  
+**⚠️ Aviso:** Snyk sinalizou risco crítico neste pacote — use com cautela e revise o que a skill sugere antes de aplicar.
+
+Diagnóstico de performance em aplicações React: detecta re-renders desnecessários, sugere uso de `useMemo`, `useCallback` e `memo`, e orienta sobre otimizações de renderização. Use ao perceber lentidão no painel do lojista ou no PWA do entregador.
+
+---
+
+## Git & Convenções
+
+### `conventional-commits`
+**Pacote:** `patricio0312rev/skills@conventional-commits` · 505 installs  
+**Como invocar:** `/conventional-commits`
+
+Guia para criação de mensagens de commit no padrão Conventional Commits: tipos (`feat`, `fix`, `docs`, `chore`…), escopo, breaking changes e changelog automático. Use ao criar qualquer commit no projeto.
+
+---
+
+## Arquitetura
+
+### `domain-driven-design`
+**Pacote:** `wondelai/skills@domain-driven-design` · 7.8K installs  
+**Como invocar:** `/domain-driven-design`
+
+Aplica o framework DDD para modelar o domínio do negócio: bounded contexts, agregados, entidades, value objects, repositórios e domain events. Essencial antes de codificar — garante que a linguagem do código reflita a linguagem do negócio. Use para refinar os agregados da Exped (Expedição, Entrega, Ponto, Comprovante) e definir os bounded contexts.
+
+---
+
+### `github-actions-docs`
+**Pacote:** `xixu-me/skills@github-actions-docs` · 13 installs  
+**Como invocar:** `/github-actions-docs`
+
+Referência de sintaxe e boas práticas para pipelines GitHub Actions: triggers, jobs, steps, secrets, environments e matrizes. Use ao construir ou revisar a esteira de CI/CD do Exped (lint → test → build → deploy no Droplet).
+
+---
+
+### `clean-architecture`
+**Pacote:** `clean-architecture` (instalada globalmente)  
+**Como invocar:** `/clean-architecture`
+
+Estrutura o software em torno da Dependency Rule: dependências de código apontam para dentro, do framework → casos de uso → entidades. Cobre ports & adapters (hexagonal), onion architecture, separação de camadas e princípios SOLID. Use ao decidir onde a lógica de negócio vive, como isolar o domínio da infraestrutura e como estruturar os módulos sem acoplar ao framework.
 
 ---
 
@@ -129,7 +173,16 @@ Etapa 4 — Fluxos e jornadas
 Etapa 5 — Arquitetura
   9. /domain-driven-design   → Modelagem do domínio e bounded contexts
  10. /software-architecture  → Decisões e diagramas de arquitetura técnica
+ 11. /clean-architecture     → Estrutura em camadas e separação de responsabilidades
+
+Etapa 6–7 — Desenvolvimento e CI/CD
+ 12. /github-actions-docs    → Esteira de CI/CD no GitHub Actions
+ 13. /conventional-commits   → Mensagens de commit padronizadas
+
+Frontend
+ 14. /tailwind-v4-shadcn     → Setup e boas práticas shadcn/ui + Tailwind v4
+ 15. /react-doctor           → Diagnóstico de performance React (re-renders, memoização)
 
 Validação contínua
- 11. /last-mile-delivery     → Validação com conhecimento do domínio logístico
+ 16. /last-mile-delivery     → Validação com conhecimento do domínio logístico
 ```

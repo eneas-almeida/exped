@@ -16,6 +16,8 @@ Registro vivo do processo de descoberta do produto. Atualizado à medida que nov
 8. [Diferenciais](#8-diferenciais)
 9. [Restrições e Decisões de MVP](#9-restrições-e-decisões-de-mvp)
 10. [Em Aberto (perguntas não respondidas)](#10-em-aberto-perguntas-não-respondidas)
+11. [Referência — App Carga MC (análise)](#11-referência--app-carga-mc-análise)
+12. [Análise Crítica — Riscos, Gargalos e Diferenciação](#12-análise-crítica--riscos-gargalos-e-diferenciação)
 
 ---
 
@@ -346,12 +348,25 @@ Compradores recorrentes têm pontos fixos pré-cadastrados no sistema (setor + n
 ### Simplicidade radical `[MVP]`
 Pensado para pessoas sem familiaridade com tecnologia. Cada interação deve demandar o mínimo possível do lojista.
 
+### Mapa gamificado com contagem regressiva `[Futuro — diferenciador estratégico]`
+Experiência visual que transforma a operação de entregas em algo visivelmente urgente e controlado:
+- **Mapa interativo do polo** (possivelmente 3D) mostrando a posição em tempo real do entregador.
+- Cada ponto de entrega aparece numerado no mapa com indicador de urgência por cor (🔴 crítico / 🟡 atenção / 🟢 ok).
+- **Contagem regressiva por entrega** — minutos restantes antes da excursão partir.
+- Visualização de múltiplos entregadores simultâneos na tela do lojista.
+- **Mecânicas de gamificação para entregadores:** sequência de entregas no prazo, pontuação por expedição, ranking interno.
+- **Métricas ao vivo para o lojista:** % entregas no prazo, tempo médio de despacho, histórico de desempenho.
+
+> Essa camada visual não tem equivalente em nenhum chatbot ou ferramenta genérica de IA. É o diferencial que torna o produto indispensável mesmo para quem conhece o ChatGPT.
+
 ---
 
 ## 9. Restrições e Decisões de MVP
 
 | Decisão | MVP | Futuro |
 |---|---|---|
+| **Domínio** | `exped.app` | — |
+| **Modelo de acesso** | Multi-tenant — múltiplas lojas no mesmo sistema; dados de cada loja completamente isolados | — |
 | **Escopo geográfico** | Santa Cruz do Capibaribe – PE | Expansão para outros polos/regiões |
 | **Usuários de teste** | 2 lojistas — com estratégia diferenciada (ver abaixo) | — |
 | **Foco absoluto** | Reduzir tempo de cadastro de expedições | — |
@@ -395,3 +410,95 @@ Os feedbacks do lojista 1 informam os ajustes antes de lançar para o lojista 2.
 ## 10. Em Aberto (perguntas não respondidas)
 
 Todas as perguntas de discovery foram respondidas. Próximas questões surgirão nas etapas de design e desenvolvimento.
+
+---
+
+## 11. Referência — App Carga MC (análise)
+
+Análise de 9 telas de um app similar desenvolvido para o contexto de atacadistas no Moda Center Santa Cruz. Usado como referência de UX e fluxo — não como concorrente direto.
+
+### Fluxo completo identificado
+
+| Tela | O que mostra | Insight para o Exped |
+|---|---|---|
+| **Login** | Seleção de papel: Lojista ou Entregador | Tagline "sem perder excursão" — confirma que o prazo é o problema central |
+| **Nova entrega (1)** | Formulário: Cliente, Cidade, Excursão/Transportadora, Volumes, Tamanho (P/M/G), Horário limite, Observação | Cadastro por entrega individual, não por expedição inteira |
+| **Nova entrega (2)** | Excursão selecionada → auto-preenche local ("Estacionamento A - Vaga 12 · Sai 17:00") e horário limite | **Maior insight de UX:** selecionar a excursão elimina 2 campos de uma vez |
+| **Nova excursão (modal)** | Cadastro inline: Nome, Tipo, Setor/Vaga, Horário de saída | Criação sem sair do fluxo — evita navegação extra |
+| **Lista de pacotes** | Cards com status visual (Aguardando carga / Entregue), nome do entregador atribuído | Lojista tem visão geral do status de cada entrega |
+| **Montar carga (entregador)** | Lista com checkboxes — entregador seleciona o que vai levar nesta viagem | Suporta múltiplas viagens por turno; entregador controla a carga |
+| **Seleção confirmada** | Checkbox marcado → card fica amarelo → "Iniciar Rota · N pacote(s)" fica ativo | Feedback visual imediato antes de confirmar |
+| **Rota em andamento** | Mapa com posição atual → marcador numerado no destino + linha tracejada. "1159 m da vaga". Botão "Atualizar Local da Vaga" | App usa **OpenStreetMap** (não Google Maps — reduz custo). Botão de atualizar vaga é essencial: a localização pode mudar |
+| **Entrega final** | Destaque da excursão + vaga. Botão "Entregar" com ícone de câmera → comprovante fotográfico | Comprovante capturado in-app, sem fluxo separado |
+
+### O que o app de referência **não tem** (oportunidades para o Exped)
+
+- Sem contagem regressiva de tempo até a partida.
+- Sem priorização visual por urgência (semáforo de prazos).
+- Sem gamificação ou métricas de desempenho.
+- Sem mapa 3D ou visão do polo inteiro.
+- Sem notificação automática ao comprador.
+- Sem desambiguação de cliente por nome.
+- Sem wizard de IA para criação de expedição.
+- Sem gestão de devoluções.
+- Sem histórico operacional estruturado.
+
+### Decisões de UX validadas pela referência
+
+1. **Excursão como âncora do formulário** — selecionar a excursão deve auto-preencher ponto e prazo. Reduz drasticamente a digitação.
+2. **Criação inline de nova excursão** — sem navegação extra; modal direto na tela de cadastro.
+3. **Checklist para o entregador** — o entregador decide o que carrega em cada viagem. Suporta múltiplas saídas no mesmo turno.
+4. **"Atualizar Local da Vaga"** — o ponto informado pelo comprador pode estar errado ou mudar. O sistema deve permitir correção em campo.
+5. **CTA único e grande para confirmar entrega** — "Cheguei na Vaga" e depois "Entregar" com câmera. Fluxo de 2 toques.
+6. **Tamanho de volume como toggle (P/M/G)** — mais rápido que digitar; reduz erros.
+
+---
+
+## 12. Análise Crítica — Riscos, Gargalos e Diferenciação
+
+### Gargalos operacionais identificados
+
+| Gargalo | Descrição | Mitigação no Exped |
+|---|---|---|
+| **Velocidade de cadastro** | 50 expedições em pico → se cada uma levar 2 min = 1h40 só de registro. O MVP precisa fazer isso em <30 segundos por entrega | Excursão como âncora (auto-preenche ponto + prazo); ponto sugerido por histórico do comprador |
+| **Nomes ambíguos** | "Rafael de Alto Branco" pode ser 3 clientes diferentes | Desambiguação com lista de sugestões ao digitar |
+| **Ponto não informado ainda** | Comprador fez pedido com antecedência mas ainda não chegou | Estado "aguardando ponto" já documentado; sistema não bloqueia o cadastro |
+| **Excursão com horário errado** | Se o horário de partida estiver incorreto no sistema, entregas perdem o prazo | "Atualizar Local da Vaga" + tela de edição rápida de horário; alerta quando prazo muda |
+| **Múltiplas viagens do entregador** | O entregador não carrega tudo de uma vez; faz 3–5 viagens no mesmo turno | Checklist por viagem (como no Carga MC) — entregador seleciona o que leva agora |
+| **Repriorização em campo** | Lojista descobre que comprador vai embora em 10 minutos com o entregador já fora | Repriorização manual pelo lojista; notificação push para o entregador (Futuro) |
+
+### Riscos críticos
+
+| Risco | Probabilidade | Impacto | Ação |
+|---|---|---|---|
+| **Formulário ainda lento demais** | Alta | Alto | Testar cronometrado com lojista 1 antes de lançar lojista 2 |
+| **Baixa adoção por baixa literacia digital** | Média | Alto | UX radical: 1 ação por tela, botões grandes, zero jargão técnico |
+| **Dados de ponto desatualizados** | Alta | Médio | Permitir que entregador atualize o ponto em campo; ciclo de revisão periódica |
+| **Internet instável no polo em pico** | Alta | Alto | PWA com cache agressivo; operações críticas (confirmar entrega) devem funcionar com conectividade intermitente |
+| **Concorrência do Carga MC** | Baixa-média | Médio | Diferenciação em urgência visual (countdown), gamificação e IA — o Carga MC não tem nenhum desses |
+| **Lojista usa o produto mas não o entregador** | Média | Alto | O app do entregador precisa ser tão simples que a adoção não exija treinamento |
+| **Churn pós-teste gratuito** | Desconhecida | Alto | Criar dependência de dados (histórico, pontos mapeados, comprovantes) que não existem fora do produto |
+
+### Estratégia de diferenciação — por que o ChatGPT não resolve isso
+
+O risco mais subestimado do produto é o lojista concluir que "uma IA genérica já faz isso". A resposta não é argumento — é experiência. O Exped precisa fazer coisas que um chatbot estruturalmente não consegue fazer:
+
+| Capacidade | ChatGPT / IA genérica | Exped |
+|---|---|---|
+| Conhecer os pontos pré-mapeados do polo (GPS, vagas, horários) | ❌ Não tem | ✅ Base de dados local, construída e refinada com uso |
+| Calcular urgência em tempo real (tempo até a partida da excursão) | ❌ Não tem relógio operacional | ✅ Motor de prazo em tempo real |
+| Mostrar mapa com posição do entregador e destinos numerados | ❌ Não tem | ✅ Mapa ao vivo no app |
+| Capturar foto + assinatura como comprovante jurídico | ❌ Não tem acesso à câmera | ✅ Comprovante em campo com GPS stamp |
+| Notificar o comprador automaticamente ao entregar | ❌ Não tem integração com WhatsApp | ✅ Disparo automático pós-comprovante |
+| Guardar histórico de quem entregou o quê, quando e com comprovante | ❌ Sem memória operacional | ✅ Rastreabilidade completa |
+| Sugerir ponto habitual do comprador na hora do cadastro | ❌ Sem base de dados de compradores recorrentes | ✅ Aprende com uso; pré-sugere o ponto |
+| Mapa gamificado com countdown + urgência visual | ❌ Impossível em chat | ✅ Diferencial de produto único |
+
+**Mecanismo de dependência (moat):** quanto mais o lojista usa o Exped, mais valiosa fica a base de dados — histórico de compradores, pontos mapeados com precisão, horários reais de excursões, comprovantes arquivados. Essa camada de dados operacionais específicos do polo não existe em nenhum outro lugar e não pode ser replicada por um chatbot.
+
+### Perguntas que ainda precisam de resposta
+
+1. **Qual é o tempo médio atual** para o lojista registrar uma expedição manualmente (referência para medir o ganho real do produto)?
+2. **O entregador usa o celular próprio?** Ou a loja fornece um aparelho? Isso impacta a escolha de PWA vs app nativo e o controle de câmera.
+3. **Como o lojista vai saber que o entregador "chegou na vaga"?** O sistema precisa notificar o lojista quando o entregador confirmar chegada?
+4. **O que acontece quando duas entregas são para o mesmo ponto mas com excursões diferentes?** Ex: vaga 33 tem duas vans de cidades diferentes partindo em horários diferentes.

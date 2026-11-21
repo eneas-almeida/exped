@@ -6,8 +6,18 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 
 ## Idioma
 
-- Todo o conteúdo do projeto — código, comentários, documentação, commits, PRs e conversas — deve ser em **português**.
+- Todo o conteúdo do projeto — comentários, documentação, commits, PRs e conversas — deve ser em **português**.
 - Exceções: nomes de bibliotecas, termos técnicos sem tradução consagrada (e.g. `deploy`, `branch`, `commit`) e identificadores de código (variáveis, funções, classes) podem permanecer em inglês quando for a convenção da tecnologia adotada.
+
+---
+
+## Nomenclatura de arquivos e diretórios
+
+- **Nomes de arquivos e diretórios devem ser sempre em inglês**, sem exceções.
+- Usar **kebab-case**: todas as letras minúsculas, palavras separadas por hífen (e.g. `delivery-plan.ts`, `create-expedition/`).
+- Nunca usar espaços, underscores, letras maiúsculas ou caracteres especiais em nomes de arquivos.
+- Exemplos corretos: `expedition.repository.ts`, `generate-delivery-plan/`, `gps-coordinates.ts`
+- Exemplos incorretos: `Expedicao.ts`, `criarExpedicao.ts`, `plano_de_entrega.ts`, `expedição.ts`
 
 ---
 
@@ -32,6 +42,7 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 
 - Antes de iniciar qualquer tópico novo — produto, requisitos, arquitetura, UX, domínio — **sempre busque uma skill relevante** com `/find-skills <tópico>`.
 - Se uma skill adequada for encontrada, instale-a globalmente com `npx skills add <pacote> -g -y` e registre-a em `docs/skills.md` antes de usá-la.
+- **Sempre que uma nova skill for instalada ou descoberta, adicione imediatamente uma entrada em `docs/skills.md`** com: nome, pacote, como invocar e quando usar. Sem exceções — skill instalada sem registro em `docs/skills.md` está incompleta.
 - Nunca resolva um tópico especializado sem verificar se existe uma skill disponível que cubra o assunto.
 
 ---
@@ -48,7 +59,8 @@ Convenções e regras de colaboração entre o time e o Claude Code neste reposi
 ## Fluxo de alterações
 
 - Ao concluir qualquer alteração em arquivos do projeto, o Claude deve **perguntar se o usuário deseja fazer commit e push** antes de encerrar a resposta.
-- Nunca commitar ou fazer push automaticamente sem a confirmação explícita do usuário.
+- **NUNCA commitar ou fazer push automaticamente sem a confirmação explícita do usuário.** Esta regra não tem exceções — nem quando a alteração parece óbvia, nem ao final de uma sessão de trabalho, nem após criar ou editar documentos.
+- Esta regra se aplica a qualquer operação git que modifique o histórico: `git commit`, `git push`, `git merge`, `git rebase`, `git tag`.
 
 ---
 
